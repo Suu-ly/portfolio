@@ -15,21 +15,22 @@ const Card = ({
   total: number;
 } & ComponentProps<typeof motion.div>) => {
   const magnitude = MAGNITUDES[index % 6];
+  const mapRange = [
+    (index - 2) * (1 / total),
+    (index - 1) * (1 / total),
+    (index + 1) * (1 / total),
+    (index + 2) * (1 / total),
+  ];
   const dir = Math.floor(magnitude * 100) % 2 === 0 ? 1 : -1;
   const dirIndex = index % 2 === 0 ? 1 : -1;
-  const rotate = useTransform(
+  const rotateZ = useTransform(
     progress,
+    mapRange,
     [
-      (index - 2) * (1 / total),
-      (index - 1) * (1 / total),
-      (index + 1) * (1 / total),
-      (index + 2) * (1 / total),
-    ],
-    [
-      `${magnitude * 9 * -dir}deg`,
+      `${magnitude * 12 * -dir}deg`,
       `${magnitude * 3 * -dir}deg`,
       `${magnitude * 3 * dir}deg`,
-      `${magnitude * 9 * dir}deg`,
+      `${magnitude * 12 * dir}deg`,
     ],
     { clamp: false }
   );
@@ -41,10 +42,12 @@ const Card = ({
   );
   const y = useTransform(
     progress,
-    [(index - 1) * (1 / total), (index + 1) * (1 / total)],
+    mapRange,
     [
+      `${(1 / magnitude) * 4 * dir * dirIndex}%`,
       `${(1 / magnitude) * 2 * dir * dirIndex}%`,
       `${(1 / magnitude) * 2 * -dir * dirIndex}%`,
+      `${(1 / magnitude) * 4 * -dir * dirIndex}%`,
     ],
     { clamp: false }
   );
@@ -64,14 +67,14 @@ export default function Home() {
     target: regionRef,
     offset: ["start end", "end start"],
   });
-  const array = useMemo(() => Array.from({ length: 4 }), []);
+  const array = useMemo(() => Array.from({ length: 5 }), []);
 
   const x = useTransform(
     scrollYProgress,
-    [0, 1 / (1 + array.length * 0.5), 1],
+    [0, 0.75 / (2 + array.length * 0.5), 1],
     [
       "20%",
-      `-${50 - Math.min(9, array.length) * 5}%`,
+      `-${30 - (Math.min(6, array.length) - 1) * 5}%`,
       `-${200 - (Math.min(9, array.length) - 1) * 10}%`,
     ],
     { clamp: false }
@@ -80,8 +83,8 @@ export default function Home() {
   const mappedProgress = useTransform(
     scrollYProgress,
     [
-      1 / (1 + array.length * 0.5),
-      (array.length * 0.5) / (1 + array.length * 0.5),
+      1 / (2 + array.length * 0.5),
+      (1 + array.length * 0.5) / (2 + array.length * 0.5),
     ],
     [0, 1],
     {
