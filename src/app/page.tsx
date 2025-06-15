@@ -182,8 +182,8 @@ export default function Home() {
         }
       >
         <div className="sticky top-0 h-screen overflow-hidden">
-          <h1 className="text-4xl font-medium absolute dark:text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            Works
+          <h1 className="text-6xl font-display font-medium absolute dark:text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            Recent Works
           </h1>
           <motion.div
             className="relative h-full flex gap-12 left-full min-w-fit items-center py-32 px-16 before:absolute before:left-80 before:h-20 before:w-[200%] before:bg-background"
