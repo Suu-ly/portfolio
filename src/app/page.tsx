@@ -41,34 +41,23 @@ const Card = ({
   ];
   const dir = Math.floor(magnitude * 100) % 2 === 0 ? 1 : -1;
   const dirIndex = index % 2 === 0 ? 1 : -1;
-  const rotateZ = useTransform(
-    progress,
-    mapRange,
-    [
-      `${magnitude * 12 * -dir}deg`,
-      `${magnitude * 3 * -dir}deg`,
-      `${magnitude * 3 * dir}deg`,
-      `${magnitude * 12 * dir}deg`,
-    ],
-    { clamp: false }
-  );
+  const rotateZ = useTransform(progress, mapRange, [
+    `${magnitude * 12 * -dir}deg`,
+    `${magnitude * 3 * -dir}deg`,
+    `${magnitude * 3 * dir}deg`,
+    `${magnitude * 12 * dir}deg`,
+  ]);
   const x = useTransform(
     progress,
     [(index - 1) * (1 / total), (index + 1) * (1 / total)],
-    [`${(1 / magnitude) * 12}%`, `${-(1 / magnitude) * 12}%`],
-    { clamp: false }
+    [`${(1 / magnitude) * 12}%`, `${-(1 / magnitude) * 12}%`]
   );
-  const y = useTransform(
-    progress,
-    mapRange,
-    [
-      `${(1 / magnitude) * 4 * dir * dirIndex}%`,
-      `${(1 / magnitude) * 2 * dir * dirIndex}%`,
-      `${(1 / magnitude) * 2 * -dir * dirIndex}%`,
-      `${(1 / magnitude) * 4 * -dir * dirIndex}%`,
-    ],
-    { clamp: false }
-  );
+  const y = useTransform(progress, mapRange, [
+    `${(1 / magnitude) * 4 * dir * dirIndex}%`,
+    `${(1 / magnitude) * 2 * dir * dirIndex}%`,
+    `${(1 / magnitude) * 2 * -dir * dirIndex}%`,
+    `${(1 / magnitude) * 4 * -dir * dirIndex}%`,
+  ]);
 
   const rawX = useMotionValue(0);
   const rotateX = useSpring(rawX);
@@ -108,7 +97,7 @@ const Card = ({
   return (
     <motion.div
       style={{ rotateZ, x: index % 2 === 0 ? x : undefined, y }}
-      className="perspective-midrange group isolate relative"
+      className="perspective-midrange group isolate relative will-change-transform"
     >
       <motion.div
         {...rest}
@@ -117,7 +106,7 @@ const Card = ({
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.2 }}
         className={cn(
-          "w-[calc(100vw-8rem)] relative min-w-72 max-w-4xl h-160 rounded-2xl bg-slate-800 border-slate-200 border-2 shrink-0 will-change-transform",
+          "w-[calc(100vw-16rem)] relative min-w-72 max-w-6xl min-h-128 max-h-[calc(100svh-8rem)] aspect-[4/3] bg-slate-200 dark:bg-slate-800 rounded-2xl border-slate-200 dark:border-slate-700 border-2 will-change-transform",
           className
         )}
         style={{ rotateX, rotateY }}
@@ -131,7 +120,7 @@ const Card = ({
       </motion.div>
       <motion.div
         role="presentation"
-        className="absolute inset-0 -z-10 duration-500 group-hover:opacity-50 blur-2xl opacity-0 transition-opacity bg-black rounded-2xl scale-102"
+        className="absolute inset-0 -z-10 duration-500 group-hover:opacity-20 blur-2xl opacity-0 transition-opacity bg-black rounded-2xl scale-102"
         style={{ rotateX: shadowX, rotateY: shadowY }}
       />
     </motion.div>
@@ -148,11 +137,15 @@ export default function Home() {
 
   const x = useTransform(
     scrollYProgress,
-    [0, 0.75 / (2 + array.length * 0.5), 1],
+    [
+      0,
+      0.75 / (2 + array.length * 0.5),
+      (1 + array.length * 0.5) / (2 + array.length * 0.5),
+    ],
     [
       "20%",
-      `-${30 - (Math.min(6, array.length) - 1) * 5}%`,
-      `-${200 - (Math.min(9, array.length) - 1) * 10}%`,
+      `-${31 - (Math.min(7, array.length) - 1) * 5}%`,
+      `-${130 - Math.min(7, array.length) * (30 / 7)}%`,
     ],
     { clamp: false }
   );
@@ -161,7 +154,7 @@ export default function Home() {
     scrollYProgress,
     [
       1 / (2 + array.length * 0.5),
-      (1 + array.length * 0.5) / (2 + array.length * 0.5),
+      (1.5 + array.length * 0.5) / (2 + array.length * 0.5),
     ],
     [0, 1],
     {
@@ -170,7 +163,7 @@ export default function Home() {
   );
 
   return (
-    <main>
+    <main className="overflow-x-clip contain-paint">
       <div className="h-screen w-screen flex items-center justify-center">
         Welcome
       </div>
@@ -181,12 +174,12 @@ export default function Home() {
           { "--elements": `${100 + array.length * 50}vh` } as CSSProperties
         }
       >
-        <div className="sticky top-0 h-screen overflow-hidden">
+        <div className="sticky top-0 h-screen">
           <h1 className="text-6xl font-display font-medium absolute dark:text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             Recent Works
           </h1>
           <motion.div
-            className="relative h-full flex gap-12 left-full min-w-fit items-center py-32 px-16 before:absolute before:left-80 before:h-20 before:w-[200%] before:bg-background"
+            className="relative h-full flex gap-12 left-full min-w-fit items-center  px-16 before:absolute before:left-80 before:h-full before:w-[200%] before:bg-background"
             style={{ x }}
           >
             {array.map((_, index) => (
