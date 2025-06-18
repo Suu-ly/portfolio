@@ -13,11 +13,13 @@ import {
   CSSProperties,
   PointerEvent,
   ReactNode,
+  useLayoutEffect,
   useMemo,
   useRef,
+  useState,
 } from "react";
 
-const MAGNITUDES = [0.724, 0.261, 0.957, 0.385, 0.773, 0.183];
+const MAGNITUDES = [0.724, 0.561, 0.957, 0.635, 0.563, 0.383];
 const ROTATE_MAGNITUDE = 0.05;
 
 const Card = ({
@@ -34,30 +36,32 @@ const Card = ({
 } & ComponentProps<typeof motion.div> & { children?: ReactNode }) => {
   const magnitude = MAGNITUDES[index % 6];
   const mapRange = [
-    (index - 2) * (1 / total),
-    (index - 1) * (1 / total),
-    (index + 1) * (1 / total),
-    (index + 2) * (1 / total),
+    (index - 2) * (1 / (total - 1)),
+    (index + 2) * (1 / (total - 1)),
   ];
   const dir = Math.floor(magnitude * 100) % 2 === 0 ? 1 : -1;
   const dirIndex = index % 2 === 0 ? 1 : -1;
-  const rotateZ = useTransform(progress, mapRange, [
-    `${magnitude * 12 * -dir}deg`,
-    `${magnitude * 3 * -dir}deg`,
-    `${magnitude * 3 * dir}deg`,
-    `${magnitude * 12 * dir}deg`,
-  ]);
+  const rotateZ = useTransform(
+    progress,
+    mapRange,
+    [`${magnitude * 12 * -dir}deg`, `${magnitude * 12 * dir}deg`],
+    { clamp: false }
+  );
   const x = useTransform(
     progress,
-    [(index - 1) * (1 / total), (index + 1) * (1 / total)],
-    [`${(1 / magnitude) * 12}%`, `${-(1 / magnitude) * 12}%`]
+    mapRange,
+    [`${(1 / magnitude) * 20}%`, `${-(1 / magnitude) * 24}%`],
+    { clamp: false }
   );
-  const y = useTransform(progress, mapRange, [
-    `${(1 / magnitude) * 4 * dir * dirIndex}%`,
-    `${(1 / magnitude) * 2 * dir * dirIndex}%`,
-    `${(1 / magnitude) * 2 * -dir * dirIndex}%`,
-    `${(1 / magnitude) * 4 * -dir * dirIndex}%`,
-  ]);
+  const y = useTransform(
+    progress,
+    mapRange,
+    [
+      `${magnitude * 24 * dir * dirIndex}%`,
+      `${magnitude * 32 * -dir * dirIndex}%`,
+    ],
+    { clamp: false }
+  );
 
   const rawX = useMotionValue(0);
   const rotateX = useSpring(rawX);
@@ -71,7 +75,7 @@ const Card = ({
   const gradientY = useSpring(rawGradientY);
   const background = useTransform(
     () =>
-      `radial-gradient(farthest-corner circle at ${gradientX.get()}% ${gradientY.get()}%, rgba(255,255,255,0.8) 10%, rgba(255,255,255,0.65) 20%, rgba(255,255,255,0) 90%)`
+      `radial-gradient(farthest-corner circle at ${gradientX.get()}% ${gradientY.get()}%, rgba(255,255,255,0.8) 0%, rgba(200,200,200,0.65) 20%, rgba(90,90,90,1) 90%)`
   );
 
   const onPointerMove = (event: PointerEvent<HTMLDivElement>) => {
@@ -97,16 +101,16 @@ const Card = ({
   return (
     <motion.div
       style={{ rotateZ, x: index % 2 === 0 ? x : undefined, y }}
-      className="perspective-midrange group isolate relative will-change-transform"
+      className="perspective-midrange group isolate relative will-change-transform origin-bottom"
     >
       <motion.div
         {...rest}
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
         whileHover={{ scale: 1.05 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.25 }}
         className={cn(
-          "w-[calc(100vw-16rem)] relative min-w-72 max-w-6xl min-h-128 max-h-[calc(100svh-8rem)] aspect-[4/3] bg-slate-200 dark:bg-slate-800 rounded-2xl border-slate-200 dark:border-slate-700 border-2 will-change-transform",
+          "w-[calc(100vw-16rem)] relative min-w-72 max-w-2xl 2xl:max-w-4xl max-h-[calc(100svh-8rem)] aspect-[4/3] bg-slate-50 dark:bg-slate-800 rounded-3xl overflow-hidden border-slate-200 dark:border-slate-700 border-2 will-change-transform",
           className
         )}
         style={{ rotateX, rotateY }}
@@ -114,7 +118,7 @@ const Card = ({
         {children}
         <motion.div
           role="presentation"
-          className="absolute inset-0 mix-blend-overlay duration-500 group-hover:opacity-20 opacity-0 transition-opacity will-change-background rounded-2xl pointer-events-none"
+          className="absolute inset-0 mix-blend-overlay duration-500 group-hover:opacity-40 opacity-0 transition-opacity will-change-background pointer-events-none"
           style={{ background }}
         />
       </motion.div>
@@ -135,41 +139,66 @@ export default function Home() {
   });
   const array = useMemo(() => Array.from({ length: 5 }), []);
 
+  const [percentage, setPercentage] = useState([0, 0]);
+
+  useLayoutEffect(() => {
+    const onResize = () => {
+      const cardSize = Math.max(
+        Math.min(
+          window.innerWidth >= 1536 ? 896 : 672,
+          window.innerWidth - 256
+        ),
+        288
+      );
+      const containerSize = cardSize * array.length + (array.length - 1) * 32;
+      const percentageLeft =
+        ((window.innerWidth / 2 + cardSize / 2) * 100) / containerSize;
+
+      const percentageRight =
+        100 + ((window.innerWidth / 2 - cardSize / 2) * 100) / containerSize;
+
+      const percentageEnd =
+        ((containerSize + window.innerWidth) * 100) / containerSize;
+      setPercentage([percentageLeft, percentageRight, percentageEnd]);
+    };
+
+    window.addEventListener("resize", onResize);
+
+    onResize();
+
+    return () => window.removeEventListener("resize", onResize);
+  }, [array.length]);
+
   const x = useTransform(
     scrollYProgress,
     [
-      0,
-      0.75 / (2 + array.length * 0.5),
+      0.65 / (2 + array.length * 0.5),
+      1.25 / (2 + array.length * 0.5),
       (1 + array.length * 0.5) / (2 + array.length * 0.5),
+      1,
     ],
-    [
-      "20%",
-      `-${31 - (Math.min(7, array.length) - 1) * 5}%`,
-      `-${130 - Math.min(7, array.length) * (30 / 7)}%`,
-    ],
+    ["0%", `-${percentage[0]}%`, `-${percentage[1]}%`, `-${percentage[2]}%`],
     { clamp: false }
   );
 
   const mappedProgress = useTransform(
     scrollYProgress,
     [
-      1 / (2 + array.length * 0.5),
-      (1.5 + array.length * 0.5) / (2 + array.length * 0.5),
+      1.25 / (2 + array.length * 0.5),
+      (1 + array.length * 0.5) / (2 + array.length * 0.5),
     ],
     [0, 1],
-    {
-      clamp: false,
-    }
+    { clamp: false }
   );
 
   return (
-    <main className="overflow-x-clip contain-paint">
+    <main>
       <div className="h-screen w-screen flex items-center justify-center">
         Welcome
       </div>
       <div
         ref={regionRef}
-        className="h-(--elements)"
+        className="h-(--elements) overflow-x-clip"
         style={
           { "--elements": `${100 + array.length * 50}vh` } as CSSProperties
         }
@@ -179,7 +208,7 @@ export default function Home() {
             Recent Works
           </h1>
           <motion.div
-            className="relative h-full flex gap-12 left-full min-w-fit items-center  px-16 before:absolute before:left-80 before:h-full before:w-[200%] before:bg-background"
+            className="relative h-full flex gap-8 left-full min-w-fit items-center before:absolute before:left-36 before:h-full before:w-[200%] before:bg-background"
             style={{ x }}
           >
             {array.map((_, index) => (
@@ -188,7 +217,19 @@ export default function Home() {
                 progress={mappedProgress}
                 index={index}
                 total={array.length}
-              ></Card>
+              >
+                <div className="relative size-full">
+                  <img
+                    src={
+                      index % 2 === 0
+                        ? "https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images//Outbound.png"
+                        : "https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images//Invest.png"
+                    }
+                    className="absolute size-full object-cover"
+                    alt="Project cover"
+                  />
+                </div>
+              </Card>
             ))}
           </motion.div>
         </div>
