@@ -1,9 +1,12 @@
 "use client";
+import TextReveal from "@/components/text-reveal";
 import { cn } from "@/lib/utils";
 import {
+  AnimatePresence,
   motion,
   MotionValue,
   useMotionValue,
+  useMotionValueEvent,
   useScroll,
   useSpring,
   useTransform,
@@ -14,7 +17,6 @@ import {
   PointerEvent,
   ReactNode,
   useLayoutEffect,
-  useMemo,
   useRef,
   useState,
 } from "react";
@@ -124,12 +126,50 @@ const Card = ({
       </motion.div>
       <motion.div
         role="presentation"
-        className="absolute inset-0 -z-10 duration-500 group-hover:opacity-20 blur-2xl opacity-0 transition-opacity bg-black rounded-2xl scale-102"
+        className="absolute inset-0 -z-10 duration-500 group-hover:opacity-25 blur-2xl opacity-0 transition-opacity bg-black rounded-2xl scale-102"
         style={{ rotateX: shadowX, rotateY: shadowY }}
       />
     </motion.div>
   );
 };
+
+const CARD_ARRAY = [
+  {
+    title: "Outbound",
+    year: 2025,
+    type: "Personal",
+    src: "https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images//Outbound.png",
+    alt: "Homepage of the Outbound trip planning website.",
+  },
+  {
+    title: "InVEST Data Portal",
+    year: 2025,
+    type: "NTU",
+    src: "https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images//Invest.png",
+    alt: "Screenshot of a map displaying various types of geological data like fault lines and volcanoes.",
+  },
+  {
+    title: "Xiaomi Mock Site",
+    year: 2024,
+    type: "School",
+    src: "https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images//Xiaomi.png",
+    alt: "Homepage of the mock website selling Xiaomi's Smart Air Purifier 4.",
+  },
+  {
+    title: "STARS Redesign",
+    year: 2024,
+    type: "School",
+    src: "https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images//Stars.png",
+    alt: "Screenshot of a redesigned timetable planner for NTU.",
+  },
+  {
+    title: "Garage@EEE",
+    year: 2023,
+    type: "School",
+    src: "https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images//Garage.png",
+    alt: "Homepage of the Garage@EEE website, a makerspace for EEE students in NTU.",
+  },
+];
 
 export default function Home() {
   const regionRef = useRef<HTMLDivElement | null>(null);
@@ -137,9 +177,10 @@ export default function Home() {
     target: regionRef,
     offset: ["start end", "end start"],
   });
-  const array = useMemo(() => Array.from({ length: 5 }), []);
 
   const [percentage, setPercentage] = useState([0, 0]);
+  const [activeCard, setActiveCard] = useState<number>(-1);
+  const timeout = useRef<NodeJS.Timeout | undefined>(undefined);
 
   useLayoutEffect(() => {
     const onResize = () => {
@@ -150,7 +191,8 @@ export default function Home() {
         ),
         288
       );
-      const containerSize = cardSize * array.length + (array.length - 1) * 32;
+      const containerSize =
+        cardSize * CARD_ARRAY.length + (CARD_ARRAY.length - 1) * 32;
       const percentageLeft =
         ((window.innerWidth / 2 + cardSize / 2) * 100) / containerSize;
 
@@ -167,14 +209,14 @@ export default function Home() {
     onResize();
 
     return () => window.removeEventListener("resize", onResize);
-  }, [array.length]);
+  }, []);
 
   const x = useTransform(
     scrollYProgress,
     [
-      0.65 / (2 + array.length * 0.5),
-      1.25 / (2 + array.length * 0.5),
-      (1 + array.length * 0.5) / (2 + array.length * 0.5),
+      0.65 / (2 + CARD_ARRAY.length * 0.5),
+      1.25 / (2 + CARD_ARRAY.length * 0.5),
+      (1 + CARD_ARRAY.length * 0.5) / (2 + CARD_ARRAY.length * 0.5),
       1,
     ],
     ["0%", `-${percentage[0]}%`, `-${percentage[1]}%`, `-${percentage[2]}%`],
@@ -184,12 +226,23 @@ export default function Home() {
   const mappedProgress = useTransform(
     scrollYProgress,
     [
-      1.25 / (2 + array.length * 0.5),
-      (1 + array.length * 0.5) / (2 + array.length * 0.5),
+      1.25 / (2 + CARD_ARRAY.length * 0.5),
+      (1 + CARD_ARRAY.length * 0.5) / (2 + CARD_ARRAY.length * 0.5),
     ],
     [0, 1],
     { clamp: false }
   );
+
+  useMotionValueEvent(mappedProgress, "change", (val) => {
+    if (timeout.current) clearTimeout(timeout.current);
+    requestAnimationFrame(
+      () =>
+        (timeout.current = setTimeout(
+          () => setActiveCard(Math.round(val * (CARD_ARRAY.length - 1))),
+          0
+        )) // Pushes the setState call to the end of the event loop
+    );
+  });
 
   return (
     <main>
@@ -200,33 +253,48 @@ export default function Home() {
         ref={regionRef}
         className="h-(--elements) overflow-x-clip"
         style={
-          { "--elements": `${100 + array.length * 50}vh` } as CSSProperties
+          { "--elements": `${100 + CARD_ARRAY.length * 50}vh` } as CSSProperties
         }
       >
+        <AnimatePresence>
+          {CARD_ARRAY.map((project, index) => {
+            if (index !== activeCard) return null;
+            return (
+              <TextReveal
+                key={index}
+                as="h2"
+                label={project.title}
+                className="text-6xl font-display font-bold fixed z-10 top-16 left-1/2 -translate-x-1/2 mix-blend-difference text-white"
+              />
+            );
+          })}
+        </AnimatePresence>
         <div className="sticky top-0 h-screen">
-          <h1 className="text-6xl font-display font-medium absolute dark:text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <h1 className="text-6xl font-display font-bold absolute dark:text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             Recent Works
           </h1>
+          {CARD_ARRAY[activeCard] && (
+            <h2 className="sr-only">
+              {CARD_ARRAY[activeCard].title} {CARD_ARRAY[activeCard].type}{" "}
+              {CARD_ARRAY[activeCard].year}
+            </h2>
+          )}
           <motion.div
             className="relative h-full flex gap-8 left-full min-w-fit items-center before:absolute before:left-36 before:h-full before:w-[200%] before:bg-background"
             style={{ x }}
           >
-            {array.map((_, index) => (
+            {CARD_ARRAY.map((project, index) => (
               <Card
                 key={index}
                 progress={mappedProgress}
                 index={index}
-                total={array.length}
+                total={CARD_ARRAY.length}
               >
                 <div className="relative size-full">
                   <img
-                    src={
-                      index % 2 === 0
-                        ? "https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images//Outbound.png"
-                        : "https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images//Invest.png"
-                    }
+                    src={project.src}
                     className="absolute size-full object-cover"
-                    alt="Project cover"
+                    alt={project.alt}
                   />
                 </div>
               </Card>
