@@ -10,6 +10,7 @@
   --color-foreground: var(--foreground);
   --font-display: var(--font-plus-jakarta-sans);
   --font-sans: var(--font-bricolage-grotesque);
+  --font-mono: var(--font-hack);
 }
 
 @media (prefers-color-scheme: dark) {

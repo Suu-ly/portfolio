@@ -1,6 +1,7 @@
 import ReactLenis from "lenis/react";
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Plus_Jakarta_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -13,6 +14,12 @@ const bricolageGrotesque = Bricolage_Grotesque({
   variable: "--font-bricolage-grotesque",
   fallback: ["Arial", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"],
   subsets: ["latin"],
+});
+
+const hack = localFont({
+  src: "./fonts/hack-regular-subset.woff2",
+  display: "swap",
+  variable: "--font-hack",
 });
 
 export const metadata: Metadata = {
@@ -28,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${bricolageGrotesque.variable} antialiased`}
+      className={`${plusJakartaSans.variable} ${bricolageGrotesque.variable} ${hack.variable} antialiased`}
     >
       <body>
         <ReactLenis root options={{ lerp: 0.15 }} />
