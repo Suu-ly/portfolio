@@ -1,3 +1,4 @@
+import Header from "@/components/header";
 import ReactLenis from "lenis/react";
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Plus_Jakarta_Sans } from "next/font/google";
@@ -39,6 +40,7 @@ export default function RootLayout({
     >
       <body>
         <ReactLenis root options={{ lerp: 0.15 }} />
+        <Header />
         {children}
       </body>
     </html>
