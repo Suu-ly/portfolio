@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { IconCornerDownRight } from "@tabler/icons-react";
-import Link from "next/link";
 import Footer from "./footer";
+import NextProject, { NextProjectProps } from "./next-project";
 
 const MaxWidthWrapper = ({
   className,
@@ -86,40 +86,6 @@ function VideoPlayer({ src }: { src: string }) {
   );
 }
 
-interface NextProjectProps {
-  src: string;
-  alt: string;
-  title: string;
-  year: string | number;
-  slug: string;
-}
-
-function NextProject({ src, alt, title, year, slug }: NextProjectProps) {
-  return (
-    <Link
-      href={`/project/${slug}`}
-      className="relative flex flex-col items-center gap-4 rounded-xl bg-zinc-950 p-2 sm:flex-row sm:rounded-2xl lg:p-4"
-    >
-      <div className="flex w-full flex-col p-3 text-center sm:gap-1 lg:gap-3">
-        <span className="text-sm font-medium text-sky-500 lg:text-2xl">
-          Next
-        </span>
-        <h3 className="font-display text-2xl font-bold text-zinc-50 sm:text-4xl lg:text-6xl">
-          {title}
-        </h3>
-        <p className="hidden text-sm font-medium text-zinc-400 sm:inline lg:text-2xl">
-          {year}
-        </p>
-      </div>
-      <img
-        className="w-full rounded-md object-cover sm:rounded-lg"
-        src={src}
-        alt={alt}
-      />
-    </Link>
-  );
-}
-
 interface TemplateProps {
   coverImg: string;
   coverAlt: string;
@@ -152,8 +118,8 @@ function PageTemplate({
   return (
     <>
       <main className="space-y-8 pt-24 sm:space-y-16 lg:space-y-32">
-        <MaxWidthWrapper className="space-y-8 sm:space-y-16 lg:space-y-32">
-          <div>
+        <MaxWidthWrapper>
+          <div className="sm:mb-16 lg:mb-32">
             <div className="mb-4 flex items-center justify-between gap-4">
               <span className="text-xs font-medium text-zinc-600 sm:text-base lg:text-lg dark:text-zinc-400">
                 {type}
