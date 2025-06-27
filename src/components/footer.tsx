@@ -3,7 +3,7 @@ import { Separator } from "./ui/separator";
 
 export default function Footer({ children }: { children?: React.ReactNode }) {
   return (
-    <footer className="flex flex-col gap-12 bg-zinc-900 pt-8 pb-4 lg:pt-16 lg:pb-8">
+    <footer className="flex flex-col gap-12 bg-zinc-900 pt-8 pb-4 sm:pt-16 lg:pt-32 lg:pb-8">
       <div className="mx-auto max-w-[1600px] px-4 lg:px-12 2xl:px-32">
         {children}
       </div>
@@ -16,7 +16,7 @@ export default function Footer({ children }: { children?: React.ReactNode }) {
             <li>
               <Link
                 href="/"
-                className="relative rounded font-medium text-zinc-300 ring-offset-zinc-900 transition after:absolute after:top-full after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-zinc-300 after:transition-transform hover:text-zinc-100 hover:after:scale-x-100 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="relative rounded font-medium text-zinc-300 transition after:absolute after:top-full after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-zinc-300 after:transition-transform hover:text-zinc-100 hover:after:scale-x-100 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none"
               >
                 Home
               </Link>
@@ -24,7 +24,7 @@ export default function Footer({ children }: { children?: React.ReactNode }) {
             <li>
               <Link
                 href="/works"
-                className="relative rounded font-medium text-zinc-300 ring-offset-zinc-900 transition after:absolute after:top-full after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-zinc-300 after:transition-transform hover:text-zinc-100 hover:after:scale-x-100 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="relative rounded font-medium text-zinc-300 transition after:absolute after:top-full after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-zinc-300 after:transition-transform hover:text-zinc-100 hover:after:scale-x-100 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none"
               >
                 Works
               </Link>
@@ -32,7 +32,7 @@ export default function Footer({ children }: { children?: React.ReactNode }) {
             <li>
               <Link
                 href="/about"
-                className="relative rounded font-medium text-zinc-300 ring-offset-zinc-900 transition after:absolute after:top-full after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-zinc-300 after:transition-transform hover:text-zinc-100 hover:after:scale-x-100 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="relative rounded font-medium text-zinc-300 transition after:absolute after:top-full after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-zinc-300 after:transition-transform hover:text-zinc-100 hover:after:scale-x-100 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none"
               >
                 About
               </Link>
@@ -49,7 +49,7 @@ export default function Footer({ children }: { children?: React.ReactNode }) {
               <a
                 href="https://www.linkedin.com/in/lanceyeo/"
                 target="_blank"
-                className="relative rounded font-medium text-zinc-300 ring-offset-zinc-900 transition after:absolute after:top-full after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-zinc-300 after:transition-transform hover:text-zinc-100 hover:after:scale-x-100 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="relative rounded font-medium text-zinc-300 transition after:absolute after:top-full after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-zinc-300 after:transition-transform hover:text-zinc-100 hover:after:scale-x-100 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none"
               >
                 LinkedIn
               </a>
@@ -58,7 +58,7 @@ export default function Footer({ children }: { children?: React.ReactNode }) {
               <a
                 href="https://github.com/Suu-ly"
                 target="_blank"
-                className="relative rounded font-medium text-zinc-300 ring-offset-zinc-900 transition after:absolute after:top-full after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-zinc-300 after:transition-transform hover:text-zinc-100 hover:after:scale-x-100 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="relative rounded font-medium text-zinc-300 transition after:absolute after:top-full after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-zinc-300 after:transition-transform hover:text-zinc-100 hover:after:scale-x-100 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none"
               >
                 Github
               </a>
