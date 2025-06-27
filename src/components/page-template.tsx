@@ -1,6 +1,124 @@
 import { cn } from "@/lib/utils";
 import { IconCornerDownRight } from "@tabler/icons-react";
+import Link from "next/link";
 import Footer from "./footer";
+
+const MaxWidthWrapper = ({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) => {
+  return (
+    <section
+      className={cn(
+        "mx-auto max-w-[1600px] px-4 sm:px-12 2xl:px-32",
+        className,
+      )}
+    >
+      {children}
+    </section>
+  );
+};
+
+function VideoTablet({ src }: { src: string }) {
+  return (
+    <div className="w-full rounded-xl bg-zinc-950 p-2 sm:rounded-2xl lg:rounded-4xl lg:p-4">
+      <video
+        loop
+        muted
+        playsInline
+        autoPlay
+        className="aspect-video w-full overflow-hidden rounded-lg sm:rounded-xl lg:rounded-[20px]"
+        src={src}
+      />
+    </div>
+  );
+}
+
+function MobileScreenshots({
+  first,
+  firstAlt,
+  second,
+  secondAlt,
+  third,
+  thirdAlt,
+}: {
+  first: string;
+  firstAlt: string;
+  second: string;
+  secondAlt: string;
+  third: string;
+  thirdAlt: string;
+}) {
+  return (
+    <div className="flex gap-8 sm:gap-16 2xl:gap-32">
+      <img
+        src={first}
+        alt={firstAlt}
+        className="aspect-[428/926] w-full overflow-hidden rounded-lg border-2 border-zinc-200 object-cover lg:rounded-xl dark:border-zinc-700"
+      />
+      <img
+        src={second}
+        alt={secondAlt}
+        className="aspect-[428/926] w-full overflow-hidden rounded-lg border-2 border-zinc-200 object-cover lg:rounded-xl dark:border-zinc-700"
+      />
+      <img
+        src={third}
+        alt={thirdAlt}
+        className="hidden aspect-[428/926] w-full overflow-hidden rounded-lg border-2 border-zinc-200 object-cover sm:inline lg:rounded-xl dark:border-zinc-700"
+      />
+    </div>
+  );
+}
+
+function VideoPlayer({ src }: { src: string }) {
+  return (
+    <video
+      className="aspect-video w-full rounded-lg lg:rounded-xl"
+      loop
+      muted
+      playsInline
+      autoPlay
+      src={src}
+    />
+  );
+}
+
+interface NextProjectProps {
+  src: string;
+  alt: string;
+  title: string;
+  year: string | number;
+  slug: string;
+}
+
+function NextProject({ src, alt, title, year, slug }: NextProjectProps) {
+  return (
+    <Link
+      href={`/project/${slug}`}
+      className="relative flex flex-col items-center gap-4 rounded-xl bg-zinc-950 p-2 sm:flex-row sm:rounded-2xl lg:p-4"
+    >
+      <div className="flex w-full flex-col p-3 text-center sm:gap-1 lg:gap-3">
+        <span className="text-sm font-medium text-sky-500 lg:text-2xl">
+          Next
+        </span>
+        <h3 className="font-display text-2xl font-bold text-zinc-50 sm:text-4xl lg:text-6xl">
+          {title}
+        </h3>
+        <p className="hidden text-sm font-medium text-zinc-400 sm:inline lg:text-2xl">
+          {year}
+        </p>
+      </div>
+      <img
+        className="w-full rounded-md object-cover sm:rounded-lg"
+        src={src}
+        alt={alt}
+      />
+    </Link>
+  );
+}
 
 interface TemplateProps {
   coverImg: string;
@@ -13,30 +131,11 @@ interface TemplateProps {
   roles: string[];
   tools: string[];
   url: string;
-  footerChild?: React.ReactNode;
+  nextProject: NextProjectProps;
   children?: React.ReactNode;
 }
 
-const MaxWidthWrapper = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) => {
-  return (
-    <section
-      className={cn(
-        "mx-auto max-w-[1600px] px-4 lg:px-12 2xl:px-32",
-        className,
-      )}
-    >
-      {children}
-    </section>
-  );
-};
-
-export default function PageTemplate({
+function PageTemplate({
   coverImg,
   coverAlt,
   title,
@@ -47,32 +146,34 @@ export default function PageTemplate({
   roles,
   tools,
   url,
-  footerChild,
   children,
+  nextProject,
 }: TemplateProps) {
   return (
     <>
-      <main>
-        <MaxWidthWrapper className="mt-24 mb-8 sm:mb-16">
-          <div className="mb-4 flex items-center justify-between gap-4">
-            <span className="text-xs font-medium text-zinc-600 sm:text-base lg:text-lg dark:text-zinc-400">
-              {type}
-            </span>
-            <span className="rounded-full border border-zinc-600 px-4 py-1 text-xs font-medium text-zinc-600 sm:text-base lg:px-6 lg:py-1.5 lg:text-lg dark:border-zinc-400 dark:text-zinc-400">
-              {year}
-            </span>
+      <main className="space-y-8 pt-24 sm:space-y-16 lg:space-y-32">
+        <MaxWidthWrapper className="space-y-8 sm:space-y-16 lg:space-y-32">
+          <div>
+            <div className="mb-4 flex items-center justify-between gap-4">
+              <span className="text-xs font-medium text-zinc-600 sm:text-base lg:text-lg dark:text-zinc-400">
+                {type}
+              </span>
+              <span className="rounded-full border border-zinc-600 px-4 py-1 text-xs font-medium text-zinc-600 sm:text-base lg:px-6 lg:py-1.5 lg:text-lg dark:border-zinc-400 dark:text-zinc-400">
+                {year}
+              </span>
+            </div>
+            <h1 className="font-display text-4xl font-bold text-zinc-900 sm:text-6xl lg:text-8xl dark:text-zinc-50">
+              {title}
+            </h1>
           </div>
-          <h1 className="font-display text-4xl font-bold text-zinc-900 sm:text-6xl lg:text-8xl dark:text-zinc-50">
-            {title}
-          </h1>
-          <div className="grid grid-cols-2 gap-8 sm:mt-16 sm:gap-16">
+          <div className="grid grid-cols-2 gap-8 sm:gap-16">
             <p className="col-span-2 self-center text-sm text-zinc-600 sm:col-span-1 sm:text-2xl dark:text-zinc-400">
               {tagline}
             </p>
             <a
               href={url}
               target="_blank"
-              className="group hidden items-center gap-3 justify-self-start rounded-xl bg-zinc-900 p-4 pr-6 text-xl text-sky-50 transition-colors hover:bg-zinc-800 sm:flex dark:bg-zinc-800"
+              className="group hidden items-center gap-3 justify-self-start rounded-xl bg-zinc-900 p-4 pr-6 text-xl text-sky-50 transition hover:bg-zinc-800 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none sm:flex dark:bg-zinc-800"
             >
               <IconCornerDownRight className="size-5 transition-transform group-hover:translate-x-1" />
               Visit Site
@@ -120,27 +221,37 @@ export default function PageTemplate({
             <a
               href={url}
               target="_blank"
-              className="group col-span-2 inline-flex items-center gap-3 rounded-xl bg-zinc-900 px-6 py-5 text-sky-50 transition-colors hover:bg-zinc-800 sm:hidden dark:bg-zinc-800"
+              className="group col-span-2 inline-flex items-center gap-3 rounded-xl bg-zinc-900 px-6 py-5 text-sky-50 transition hover:bg-zinc-800 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none sm:hidden dark:bg-zinc-800"
             >
               <IconCornerDownRight className="size-5 transition-transform group-hover:translate-x-1" />
               Visit Site
             </a>
           </div>
         </MaxWidthWrapper>
-        <div className="relative mx-auto mb-8 aspect-[4/3] w-full max-w-[1600px] overflow-hidden sm:mb-16">
+        <div className="relative mx-auto aspect-[4/3] w-full max-w-[1600px] overflow-hidden">
           <img
             src={coverImg}
             alt={coverAlt}
             className="absolute size-full object-cover"
           />
         </div>
-        <div className="bg-zinc-100 py-8 sm:py-16 dark:bg-zinc-800">
-          <MaxWidthWrapper className="space-y-8 lg:space-y-16">
+        <div className="bg-zinc-100 py-8 sm:py-16 lg:py-32 dark:bg-zinc-800">
+          <MaxWidthWrapper className="space-y-8 sm:space-y-16 lg:space-y-32">
             {children}
           </MaxWidthWrapper>
         </div>
       </main>
-      <Footer>{footerChild}</Footer>
+      <Footer>
+        <NextProject {...nextProject} />
+      </Footer>
     </>
   );
 }
+
+export {
+  MobileScreenshots,
+  NextProject,
+  PageTemplate,
+  VideoPlayer,
+  VideoTablet,
+};
