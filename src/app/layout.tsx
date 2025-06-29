@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, Plus_Jakarta_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Providers } from "./providers";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -43,7 +44,7 @@ export default function RootLayout({
       <body>
         <ReactLenis root options={{ lerp: 0.15 }} />
         <Header />
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

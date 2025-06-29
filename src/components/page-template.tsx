@@ -111,7 +111,7 @@ function PageTemplate({
       <MaxWidthWrapper>
         <ParallaxFade>
           <div className="sm:mb-16 lg:mb-32">
-            <div className="mb-4 flex items-center justify-between gap-4">
+            <div className="animate-slide-in mb-4 flex items-center justify-between gap-4">
               <span className="text-xs font-medium text-zinc-600 sm:text-base lg:text-lg dark:text-zinc-400">
                 {type}
               </span>
@@ -119,11 +119,11 @@ function PageTemplate({
                 {date.getFullYear()}
               </span>
             </div>
-            <h1 className="font-display text-4xl font-bold text-zinc-900 sm:text-6xl lg:text-8xl dark:text-zinc-50">
+            <h1 className="font-display animate-slide-in animation-delay-75 text-4xl font-bold text-zinc-900 sm:text-6xl lg:text-8xl dark:text-zinc-50">
               {title}
             </h1>
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:gap-16">
+          <div className="animate-slide-in animation-delay-150 grid grid-cols-2 gap-8 sm:gap-16">
             <p className="col-span-2 self-center text-sm text-zinc-600 sm:col-span-1 sm:text-2xl dark:text-zinc-400">
               {tagline}
             </p>
@@ -186,7 +186,7 @@ function PageTemplate({
           </div>
         </ParallaxFade>
       </MaxWidthWrapper>
-      <div className="relative mx-auto aspect-[4/3] w-full max-w-[1600px] overflow-hidden">
+      <div className="animate-slide-in animation-delay-225 relative mx-auto aspect-[4/3] w-full max-w-[1600px] overflow-hidden">
         <img
           src={coverImg}
           alt={coverAlt}

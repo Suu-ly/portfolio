@@ -14,6 +14,24 @@
   --font-mono: var(--font-hack);
 }
 
+@theme {
+  --animate-slide-in: slide-in 0.5s cubic-bezier(0, 0, 0, 1) backwards;
+  @keyframes slide-in {
+    0% {
+      opacity: 0;
+      transform: translateY(4rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0rem);
+    }
+  }
+}
+
+@utility animation-delay-* {
+  animation-delay: --value(integer)ms;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: oklch(0.21 0.01 286);
