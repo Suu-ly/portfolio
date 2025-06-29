@@ -4,7 +4,7 @@ import { Separator } from "./ui/separator";
 export default function Footer({ children }: { children?: React.ReactNode }) {
   return (
     <footer className="flex flex-col gap-12 bg-zinc-900 pt-8 pb-4 sm:pt-16 lg:pt-32 lg:pb-8">
-      <div className="mx-auto max-w-[1600px] px-4 lg:px-12 2xl:px-32">
+      <div className="mx-auto w-full max-w-[1600px] px-4 lg:px-12 2xl:px-32">
         {children}
       </div>
       <div className="mx-4 flex flex-col gap-4 sm:flex-row sm:gap-32 lg:mx-12 2xl:mx-32">
