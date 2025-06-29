@@ -1,3 +1,4 @@
+import { PageProperties } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { IconCornerDownRight } from "@tabler/icons-react";
 import NextProject from "./next-project";
@@ -30,6 +31,7 @@ function VideoTablet({ src }: { src: string }) {
         muted
         playsInline
         autoPlay
+        aria-label="Video showcase of website"
         className="aspect-video w-full overflow-hidden rounded-lg sm:rounded-xl lg:rounded-[20px]"
         src={src}
       />
@@ -81,22 +83,13 @@ function VideoPlayer({ src }: { src: string }) {
       muted
       playsInline
       autoPlay
+      aria-label="Video showcase of website"
       src={src}
     />
   );
 }
 
-interface TemplateProps {
-  coverImg: string;
-  coverAlt: string;
-  title: string;
-  type: string;
-  year: string | number;
-  tagline: string;
-  about: string;
-  roles: string[];
-  tools: string[];
-  url: string;
+interface TemplateProps extends PageProperties {
   children?: React.ReactNode;
 }
 
@@ -105,7 +98,7 @@ function PageTemplate({
   coverAlt,
   title,
   type,
-  year,
+  date,
   tagline,
   about,
   roles,
@@ -123,7 +116,7 @@ function PageTemplate({
                 {type}
               </span>
               <span className="rounded-full border border-zinc-600 px-4 py-1 text-xs font-medium text-zinc-600 sm:text-base lg:px-6 lg:py-1.5 lg:text-lg dark:border-zinc-400 dark:text-zinc-400">
-                {year}
+                {date.getFullYear()}
               </span>
             </div>
             <h1 className="font-display text-4xl font-bold text-zinc-900 sm:text-6xl lg:text-8xl dark:text-zinc-50">

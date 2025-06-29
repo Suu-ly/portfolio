@@ -23,15 +23,15 @@ export const properties: PageProperties = {
 
 export default function Outbound() {
   return (
-    <PageTemplate {...properties} year={properties.date.getFullYear()}>
+    <PageTemplate {...properties}>
       <VideoTablet src="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images/Outbound_new_trip.mp4" />
       <MobileScreenshots
         first="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images//Outbound_home_mobile.png"
-        firstAlt="Screenshot of the Outbound trip planner's home screen"
+        firstAlt="Mobile screenshot of the Outbound trip planner's home screen"
         second="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images//Outbound_discover_mobile.png"
-        secondAlt="Screenshot of the Outbound trip planner's place discovery screen"
+        secondAlt="Mobile screenshot of the Outbound trip planner's place discovery screen"
         third="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images//Outbound_trip_mobile.png"
-        thirdAlt="Screenshot of the Outbound trip planner's itinerary planner screen"
+        thirdAlt="Mobile screenshot of the Outbound trip planner's itinerary planner screen"
       />
       <VideoPlayer src="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images/Outbound_planner.mp4" />
     </PageTemplate>

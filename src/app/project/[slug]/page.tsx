@@ -36,7 +36,7 @@ export default async function Page({
   );
   // Sort all the project imports by the date
   allProjects.sort(
-    (a, b) => a.importVal.properties.date - b.importVal.properties.date,
+    (a, b) => b.importVal.properties.date - a.importVal.properties.date,
   );
   const currentPageIndex = allProjects.findIndex((val) => val.slug === slug);
   const Project = allProjects[currentPageIndex].importVal.default;
