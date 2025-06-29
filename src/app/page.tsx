@@ -41,11 +41,11 @@ const CARD_ARRAY = [
 export default function Home() {
   return (
     <main>
-      <div className="h-screen w-screen flex items-center justify-center">
+      <div className="flex h-screen w-screen items-center justify-center">
         Welcome
       </div>
       <RecentWorks works={CARD_ARRAY} />
-      <div className="h-screen w-screen flex items-center justify-center">
+      <div className="flex h-screen w-screen items-center justify-center">
         Contact me
       </div>
     </main>
