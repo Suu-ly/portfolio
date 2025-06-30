@@ -1,6 +1,7 @@
 import { PageProperties } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { IconCornerDownRight } from "@tabler/icons-react";
+import Image from "next/image";
 import NextProject from "./next-project";
 import ParallaxFade from "./parallax-fade";
 
@@ -56,17 +57,26 @@ function MobileScreenshots({
 }) {
   return (
     <div className="flex gap-8 sm:gap-16 2xl:gap-32">
-      <img
+      <Image
+        width={428}
+        height={926}
+        sizes="(max-width: 639px) 288px, (max-width: 1023px) 268px, 364px"
         src={first}
         alt={firstAlt}
         className="aspect-[428/926] w-full overflow-hidden rounded-lg border-2 border-zinc-200 object-cover lg:rounded-xl dark:border-zinc-700"
       />
-      <img
+      <Image
+        width={428}
+        height={926}
+        sizes="(max-width: 639px) 288px, (max-width: 1023px) 268px, 364px"
         src={second}
         alt={secondAlt}
         className="aspect-[428/926] w-full overflow-hidden rounded-lg border-2 border-zinc-200 object-cover lg:rounded-xl dark:border-zinc-700"
       />
-      <img
+      <Image
+        width={428}
+        height={926}
+        sizes="(max-width: 639px) 288px, (max-width: 1023px) 268px, 364px"
         src={third}
         alt={thirdAlt}
         className="hidden aspect-[428/926] w-full overflow-hidden rounded-lg border-2 border-zinc-200 object-cover sm:inline lg:rounded-xl dark:border-zinc-700"
@@ -78,13 +88,26 @@ function MobileScreenshots({
 function VideoPlayer({ src }: { src: string }) {
   return (
     <video
-      className="aspect-video w-full rounded-lg lg:rounded-xl"
+      className="aspect-video w-full rounded-lg border-2 border-zinc-200 lg:rounded-xl dark:border-zinc-700"
       loop
       muted
       playsInline
       autoPlay
       aria-label="Video showcase of website"
       src={src}
+    />
+  );
+}
+
+function DesktopScreenshot({ src, alt }: { src: string; alt: string }) {
+  return (
+    <Image
+      width={1920}
+      height={1080}
+      sizes="(max-width: 1535px) 100vw, 1344px"
+      className="aspect-video w-full rounded-lg lg:rounded-xl"
+      src={src}
+      alt={alt}
     />
   );
 }
@@ -187,7 +210,10 @@ function PageTemplate({
         </ParallaxFade>
       </MaxWidthWrapper>
       <div className="animate-slide-in animation-delay-225 relative mx-auto aspect-[4/3] w-full max-w-[1600px] overflow-hidden">
-        <img
+        <Image
+          width={1928}
+          height={1446}
+          sizes="(max-width: 1600px) 100vw, 1600px"
           src={coverImg}
           alt={coverAlt}
           className="absolute size-full object-cover"
@@ -203,6 +229,7 @@ function PageTemplate({
 }
 
 export {
+  DesktopScreenshot,
   MobileScreenshots,
   NextProject,
   PageTemplate,

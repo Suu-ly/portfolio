@@ -1,4 +1,8 @@
-import { PageTemplate, VideoTablet } from "@/components/page-template";
+import {
+  DesktopScreenshot,
+  PageTemplate,
+  VideoTablet,
+} from "@/components/page-template";
 import { PageProperties } from "@/lib/types";
 
 export const properties: PageProperties = {
@@ -22,6 +26,14 @@ export default function Outbound() {
   return (
     <PageTemplate {...properties}>
       <VideoTablet src="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images/Invest_showcase.mp4" />
+      <DesktopScreenshot
+        src="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images/Invest_map.png"
+        alt="Screenshot of the map with a fault line highlighted."
+      />
+      <DesktopScreenshot
+        src="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images/Invest_publications.png"
+        alt="Screenshot of a page showing publications related to the data presented on the website."
+      />
     </PageTemplate>
   );
 }

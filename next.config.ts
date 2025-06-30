@@ -4,6 +4,13 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   pageExtensions: ["mdx", "ts", "tsx"],
+  images: {
+    remotePatterns: [
+      new URL(
+        "https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images/**",
+      ),
+    ],
+  },
 };
 
 const withMDX = createMDX({
