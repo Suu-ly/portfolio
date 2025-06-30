@@ -17,7 +17,7 @@ export const properties: PageProperties = {
     "Homepage of the Garage@EEE website, a makerspace for EEE students in NTU.",
   roles: ["Designer", "Frontend developer"],
   tools: ["React", "Apps Script"],
-  tagline: "How can we showcase our club to interested students?",
+  tagline: "A platform to showcase club activities",
   url: "https://garage-eee.com/",
 };
 

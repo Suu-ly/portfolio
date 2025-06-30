@@ -17,8 +17,7 @@ export const properties: PageProperties = {
     "Screenshot of a map displaying various types of geological data like fault lines and volcanoes.",
   roles: ["Frontend developer"],
   tools: ["NextJS", "PostGIS"],
-  tagline:
-    "How can we design a flexible system to display different kinds of data?",
+  tagline: "Portal for geographic data visualisation",
   url: "https://map-green.vercel.app/",
 };
 

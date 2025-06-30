@@ -8,7 +8,7 @@ import { PageProperties } from "@/lib/types";
 export const properties: PageProperties = {
   about:
     "A mock pamphlet website designed as part of a school project. The website's purpose is to communicate the benefits of the chosen product, in this case Xiaomi's Smart Air Purifier 4, and sell the product to the user.",
-  title: "Xiaomi Mock Website",
+  title: "Xiaomi",
   date: new Date(2024, 8),
   type: "School Project",
   coverImg:
@@ -17,8 +17,7 @@ export const properties: PageProperties = {
     "Homepage of the mock website selling Xiaomi's Smart Air Purifier 4.",
   roles: ["Designer", "Frontend developer"],
   tools: ["React"],
-  tagline:
-    "How can we design a standout website that sells a product to a user?",
+  tagline: "Mock promotional website for Xiaomi",
   url: "https://mi-coral.vercel.app/",
 };
 

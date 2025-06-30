@@ -8,7 +8,7 @@ import { PageProperties } from "@/lib/types";
 
 export const properties: PageProperties = {
   about:
-    "Planning a trip can be tiring with the amount of information you have to look through. Outbound solves this through the use of a tinder-style interface and easy to use itinerary planner to make trip planning effortless and fun.",
+    "Planning a trip can be tiring with the amount of information you have to look through. Outbound solves this through the use of a tinder-style interface and an easy to use itinerary planner to make trip planning effortless and fun.",
   title: "Outbound",
   date: new Date(2025, 5),
   type: "Personal",
@@ -17,7 +17,7 @@ export const properties: PageProperties = {
   coverAlt: "Homepage of the Outbound trip planning website.",
   roles: ["Full-stack developer"],
   tools: ["Figma", "NextJS", "PostgreSQL", "Redis"],
-  tagline: "How can we make trip planning fun?",
+  tagline: "Tinder-style trip planning",
   url: "https://outbound-one.vercel.app",
 };
 
