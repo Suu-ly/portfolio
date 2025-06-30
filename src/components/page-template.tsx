@@ -1,7 +1,7 @@
 import { PageProperties } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { IconCornerDownRight } from "@tabler/icons-react";
-import Image from "next/image";
+import ImageFadeIn from "./image-fade-in";
 import NextProject from "./next-project";
 import ParallaxFade from "./parallax-fade";
 
@@ -57,7 +57,7 @@ function MobileScreenshots({
 }) {
   return (
     <div className="flex gap-8 sm:gap-16 2xl:gap-32">
-      <Image
+      <ImageFadeIn
         width={428}
         height={926}
         sizes="(max-width: 639px) 288px, (max-width: 1023px) 268px, 364px"
@@ -65,7 +65,7 @@ function MobileScreenshots({
         alt={firstAlt}
         className="aspect-[428/926] w-full overflow-hidden rounded-lg border-2 border-zinc-200 object-cover lg:rounded-xl dark:border-zinc-700"
       />
-      <Image
+      <ImageFadeIn
         width={428}
         height={926}
         sizes="(max-width: 639px) 288px, (max-width: 1023px) 268px, 364px"
@@ -73,7 +73,7 @@ function MobileScreenshots({
         alt={secondAlt}
         className="aspect-[428/926] w-full overflow-hidden rounded-lg border-2 border-zinc-200 object-cover lg:rounded-xl dark:border-zinc-700"
       />
-      <Image
+      <ImageFadeIn
         width={428}
         height={926}
         sizes="(max-width: 639px) 288px, (max-width: 1023px) 268px, 364px"
@@ -101,7 +101,7 @@ function VideoPlayer({ src }: { src: string }) {
 
 function DesktopScreenshot({ src, alt }: { src: string; alt: string }) {
   return (
-    <Image
+    <ImageFadeIn
       width={1920}
       height={1080}
       sizes="(max-width: 1535px) 100vw, 1344px"
@@ -210,7 +210,7 @@ function PageTemplate({
         </ParallaxFade>
       </MaxWidthWrapper>
       <div className="animate-slide-in animation-delay-225 relative mx-auto aspect-[4/3] w-full max-w-[1600px] overflow-hidden">
-        <Image
+        <ImageFadeIn
           width={1928}
           height={1446}
           sizes="(max-width: 1600px) 100vw, 1600px"

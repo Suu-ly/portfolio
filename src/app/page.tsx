@@ -22,7 +22,7 @@ export default async function Home() {
   return (
     <>
       <main>
-        <div className="flex h-screen w-screen items-center justify-center">
+        <div className="flex h-[50vh] w-screen items-center justify-center">
           <div className="p-4 text-center">
             <h1 className="font-display mb-8 text-8xl font-bold text-zinc-900 dark:text-zinc-50">
               Lance

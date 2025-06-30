@@ -3,6 +3,7 @@
 import { motion, Variants } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
+import ImageFadeIn from "./image-fade-in";
 
 export interface NextProjectProps {
   src: string;
@@ -84,7 +85,7 @@ export default function NextProject({
           </motion.p>
         </div>
         <motion.h3
-          className="font-display text-2xl font-bold text-zinc-50 sm:text-4xl lg:text-6xl"
+          className="font-display text-2xl font-bold text-zinc-50 sm:text-4xl 2xl:text-6xl"
           variants={animation}
           initial="base"
           animate={hovering ? "raised" : "base"}
@@ -110,8 +111,11 @@ export default function NextProject({
         </p>
       </div>
       <div className="w-full overflow-hidden rounded-md sm:rounded-lg">
-        <img
-          className="object-cover transition-transform duration-500 group-hover:scale-103"
+        <ImageFadeIn
+          width={1928}
+          height={1446}
+          className="w-full object-cover transition-transform duration-500 group-hover:scale-103"
+          sizes="(max-width: 639px) 100vw, (max-width: 1535px) 50vw, 644px"
           src={src}
           alt={alt}
         />
