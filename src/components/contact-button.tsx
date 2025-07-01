@@ -16,7 +16,7 @@ export default function ContactButton() {
 
   return (
     <a
-      href="mailto:lanceyeo13@gmail.commailto:lanceyeo13@gmail.com?subject=We%20Would%20Like%20To%20Work%20With%20You&body=What%20do%20you%20need%20help%20with%3F"
+      href="mailto:lanceyeo13@gmail.com?subject=We%20Would%20Like%20To%20Work%20With%20You&body=What%20do%20you%20need%20help%20with%3F"
       target="_blank"
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
