@@ -82,13 +82,11 @@ export default function ProjectCard({
         />
       </div>
       <div className="space-y-1 p-2">
-        <div className="flex w-full items-center justify-between gap-4 text-sm font-medium text-zinc-600 dark:text-zinc-400">
+        <div className="text-muted flex w-full items-center justify-between gap-4 text-sm font-medium">
           <p>{type}</p>
           <p>{year}</p>
         </div>
-        <p className="font-display text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-          {title}
-        </p>
+        <p className="font-display text-main text-2xl font-bold">{title}</p>
       </div>
       <motion.div
         initial={{
@@ -103,7 +101,7 @@ export default function ProjectCard({
               }
         }
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
-        className="absolute top-4 right-4 isolate flex max-w-[calc(100%-2rem)] justify-end rounded-3xl bg-white text-zinc-600 before:absolute before:-z-10 before:size-[150%] before:bg-zinc-100 lg:top-8 lg:right-8 lg:max-w-[calc(100%-4rem)] dark:bg-black dark:text-zinc-400 dark:before:bg-black"
+        className="text-muted absolute top-4 right-4 isolate flex max-w-[calc(100%-2rem)] justify-end rounded-3xl bg-white before:absolute before:-z-10 before:size-[150%] before:bg-zinc-100 lg:top-8 lg:right-8 lg:max-w-[calc(100%-4rem)] dark:bg-black dark:before:bg-black"
       >
         <motion.div
           ref={taglineRef}

@@ -63,7 +63,7 @@ function MobileScreenshots({
         sizes="(max-width: 639px) 288px, (max-width: 1535px) 428px, 364px"
         src={first}
         alt={firstAlt}
-        className="aspect-[428/926] w-full overflow-hidden rounded-lg border-2 border-zinc-200 object-cover lg:rounded-xl dark:border-zinc-700"
+        className="border-border aspect-[428/926] w-full overflow-hidden rounded-lg border-2 object-cover lg:rounded-xl"
       />
       <ImageFadeIn
         width={428}
@@ -71,7 +71,7 @@ function MobileScreenshots({
         sizes="(max-width: 639px) 288px, (max-width: 1535px) 428px, 364px"
         src={second}
         alt={secondAlt}
-        className="aspect-[428/926] w-full overflow-hidden rounded-lg border-2 border-zinc-200 object-cover lg:rounded-xl dark:border-zinc-700"
+        className="border-border aspect-[428/926] w-full overflow-hidden rounded-lg border-2 object-cover lg:rounded-xl"
       />
       <ImageFadeIn
         width={428}
@@ -79,7 +79,7 @@ function MobileScreenshots({
         sizes="(max-width: 639px) 288px, (max-width: 1535px) 428px, 364px"
         src={third}
         alt={thirdAlt}
-        className="hidden aspect-[428/926] w-full overflow-hidden rounded-lg border-2 border-zinc-200 object-cover sm:inline lg:rounded-xl dark:border-zinc-700"
+        className="border-border hidden aspect-[428/926] w-full overflow-hidden rounded-lg border-2 object-cover sm:inline lg:rounded-xl"
       />
     </div>
   );
@@ -88,7 +88,7 @@ function MobileScreenshots({
 function VideoPlayer({ src }: { src: string }) {
   return (
     <video
-      className="aspect-video w-full rounded-lg border-2 border-zinc-200 lg:rounded-xl dark:border-zinc-700"
+      className="border-border aspect-video w-full rounded-lg border-2 lg:rounded-xl"
       loop
       muted
       playsInline
@@ -135,19 +135,19 @@ function PageTemplate({
         <ParallaxFade>
           <div className="sm:mb-16 lg:mb-32">
             <div className="animate-slide-in mb-4 flex items-center justify-between gap-4">
-              <span className="text-xs font-medium text-zinc-600 sm:text-base lg:text-lg dark:text-zinc-400">
+              <span className="text-muted text-xs font-medium sm:text-base lg:text-lg">
                 {type}
               </span>
-              <span className="rounded-full border border-zinc-600 px-4 py-1 text-xs font-medium text-zinc-600 sm:text-base lg:px-6 lg:py-1.5 lg:text-lg dark:border-zinc-400 dark:text-zinc-400">
+              <span className="text-muted rounded-full border border-zinc-600 px-4 py-1 text-xs font-medium sm:text-base lg:px-6 lg:py-1.5 lg:text-lg dark:border-zinc-400">
                 {date.getFullYear()}
               </span>
             </div>
-            <h1 className="font-display animate-slide-in animation-delay-75 text-4xl font-bold text-zinc-900 sm:text-6xl lg:text-8xl dark:text-zinc-50">
+            <h1 className="font-display animate-slide-in animation-delay-75 text-main text-4xl font-bold sm:text-6xl lg:text-8xl">
               {title}
             </h1>
           </div>
           <div className="animate-slide-in animation-delay-150 grid grid-cols-2 gap-8 sm:gap-16">
-            <p className="col-span-2 self-center text-sm text-zinc-600 sm:col-span-1 sm:text-2xl dark:text-zinc-400">
+            <p className="text-muted col-span-2 self-center text-sm sm:col-span-1 sm:text-2xl">
               {tagline}
             </p>
             <a
@@ -159,39 +159,31 @@ function PageTemplate({
               Visit Site
             </a>
             <div className="col-span-2 sm:col-span-1">
-              <p className="mb-2 text-sm font-medium text-sky-800 sm:text-base dark:text-sky-500">
+              <p className="text-accent mb-2 text-sm font-medium sm:text-base">
                 About
               </p>
-              <p className="text-zinc-700 sm:text-lg dark:text-zinc-300">
-                {about}
-              </p>
+              <p className="text-body sm:text-lg">{about}</p>
             </div>
             <div className="col-span-2 grid grid-cols-2 gap-8 sm:col-span-1 lg:gap-16">
               <div className="sm:col-span-2 lg:col-span-1">
-                <p className="mb-2 text-sm font-medium text-sky-800 sm:text-base dark:text-sky-500">
+                <p className="text-accent mb-2 text-sm font-medium sm:text-base">
                   Role
                 </p>
                 <div className="flex flex-col">
                   {roles.map((role) => (
-                    <p
-                      key={role}
-                      className="text-zinc-700 sm:text-lg dark:text-zinc-300"
-                    >
+                    <p key={role} className="text-body sm:text-lg">
                       {role}
                     </p>
                   ))}
                 </div>
               </div>
               <div className="sm:col-span-2 lg:col-span-1">
-                <p className="mb-2 text-sm font-medium text-sky-800 sm:text-base dark:text-sky-500">
+                <p className="text-accent mb-2 text-sm font-medium sm:text-base">
                   Tools
                 </p>
                 <div className="flex flex-col">
                   {tools.map((tool) => (
-                    <p
-                      key={tool}
-                      className="text-zinc-700 sm:text-lg dark:text-zinc-300"
-                    >
+                    <p key={tool} className="text-body sm:text-lg">
                       {tool}
                     </p>
                   ))}

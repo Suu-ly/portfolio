@@ -48,13 +48,13 @@ const Card = ({
     progress,
     mapRange,
     [`${magnitude * 12 * -dir}deg`, `${magnitude * 12 * dir}deg`],
-    { clamp: false }
+    { clamp: false },
   );
   const x = useTransform(
     progress,
     mapRange,
     [`${(1 / magnitude) * 20}%`, `${-(1 / magnitude) * 24}%`],
-    { clamp: false }
+    { clamp: false },
   );
   const y = useTransform(
     progress,
@@ -63,7 +63,7 @@ const Card = ({
       `${magnitude * 24 * dir * dirIndex}%`,
       `${magnitude * 32 * -dir * dirIndex}%`,
     ],
-    { clamp: false }
+    { clamp: false },
   );
 
   const rawX = useMotionValue(0);
@@ -78,7 +78,7 @@ const Card = ({
   const gradientY = useSpring(rawGradientY);
   const background = useTransform(
     () =>
-      `radial-gradient(farthest-corner circle at ${gradientX.get()}% ${gradientY.get()}%, rgba(255,255,255,0.8) 0%, rgba(200,200,200,0.65) 20%, rgba(90,90,90,1) 90%)`
+      `radial-gradient(farthest-corner circle at ${gradientX.get()}% ${gradientY.get()}%, rgba(255,255,255,0.8) 0%, rgba(200,200,200,0.65) 20%, rgba(90,90,90,1) 90%)`,
   );
 
   const onPointerMove = (event: PointerEvent<HTMLDivElement>) => {
@@ -104,7 +104,7 @@ const Card = ({
   return (
     <motion.div
       style={{ rotateZ, x: index % 2 === 0 ? x : undefined, y }}
-      className="perspective-midrange group isolate relative will-change-transform origin-bottom"
+      className="group relative isolate origin-bottom will-change-transform perspective-midrange"
     >
       <motion.div
         {...rest}
@@ -113,21 +113,21 @@ const Card = ({
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.25 }}
         className={cn(
-          "w-[calc(100vw-16rem)] relative min-w-72 max-w-2xl 2xl:max-w-4xl max-h-[calc(100svh-8rem)] aspect-[4/3] bg-slate-50 dark:bg-slate-800 rounded-3xl overflow-hidden border-slate-200 dark:border-slate-700 border-2 will-change-transform",
-          className
+          "border-border relative aspect-[4/3] max-h-[calc(100svh-8rem)] w-[calc(100vw-16rem)] max-w-2xl min-w-72 overflow-hidden rounded-3xl border-2 bg-slate-50 will-change-transform 2xl:max-w-4xl dark:bg-slate-800",
+          className,
         )}
         style={{ rotateX, rotateY }}
       >
         {children}
         <motion.div
           role="presentation"
-          className="absolute inset-0 mix-blend-overlay duration-500 group-hover:opacity-40 opacity-0 transition-opacity will-change-background pointer-events-none"
+          className="will-change-background pointer-events-none absolute inset-0 opacity-0 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-40"
           style={{ background }}
         />
       </motion.div>
       <motion.div
         role="presentation"
-        className="absolute inset-0 -z-10 duration-500 group-hover:opacity-25 blur-2xl opacity-0 transition-opacity bg-black rounded-2xl scale-102"
+        className="absolute inset-0 -z-10 scale-102 rounded-2xl bg-black opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-25"
         style={{ rotateX: shadowX, rotateY: shadowY }}
       />
     </motion.div>
@@ -158,9 +158,9 @@ export default function RecentWorks({ works }: { works: WorksProps }) {
       const cardSize = Math.max(
         Math.min(
           window.innerWidth >= 1536 ? 896 : 672,
-          window.innerWidth - 256
+          window.innerWidth - 256,
         ),
-        288
+        288,
       );
       const containerSize = cardSize * works.length + (works.length - 1) * 32;
       const percentageLeft =
@@ -190,7 +190,7 @@ export default function RecentWorks({ works }: { works: WorksProps }) {
       1,
     ],
     ["0%", `-${percentage[0]}%`, `-${percentage[1]}%`, `-${percentage[2]}%`],
-    { clamp: false }
+    { clamp: false },
   );
 
   const mappedProgress = useTransform(
@@ -200,7 +200,7 @@ export default function RecentWorks({ works }: { works: WorksProps }) {
       (1 + works.length * 0.5) / (2 + works.length * 0.5),
     ],
     [0, 1],
-    { clamp: false }
+    { clamp: false },
   );
 
   useMotionValueEvent(mappedProgress, "change", (val) => {
@@ -209,8 +209,8 @@ export default function RecentWorks({ works }: { works: WorksProps }) {
       () =>
         (timeout.current = setTimeout(
           () => setActiveCard(Math.round(val * (works.length - 1))),
-          0
-        )) // Pushes the setState call to the end of the event loop
+          0,
+        )), // Pushes the setState call to the end of the event loop
     );
   });
 
@@ -229,26 +229,26 @@ export default function RecentWorks({ works }: { works: WorksProps }) {
                 key={"title" + index}
                 as="h2"
                 label={project.title}
-                className="text-6xl font-display font-bold fixed z-10 top-16 left-1/2 -translate-x-1/2 mix-blend-difference text-white w-full text-center"
+                className="font-display fixed top-16 left-1/2 z-10 w-full -translate-x-1/2 text-center text-6xl font-bold text-white mix-blend-difference"
               />
               <TextReveal
                 key={"type" + index}
                 as="h2"
                 label={project.type}
-                className="text-2xl font-semibold fixed z-10 bottom-16 left-1/4 -translate-x-1/2 mix-blend-difference text-white"
+                className="fixed bottom-16 left-1/4 z-10 -translate-x-1/2 text-2xl font-semibold text-white mix-blend-difference"
               />
               <TextReveal
                 key={"year" + index}
                 as="h2"
                 label={`${project.year}`}
-                className="text-2xl font-semibold fixed z-10 bottom-16 left-3/4 -translate-x-1/2 mix-blend-difference text-white"
+                className="fixed bottom-16 left-3/4 z-10 -translate-x-1/2 text-2xl font-semibold text-white mix-blend-difference"
               />
             </motion.div>
           );
         })}
       </AnimatePresence>
       <div className="sticky top-0 h-screen">
-        <h1 className="text-6xl font-display font-bold absolute dark:text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <h1 className="font-display absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl font-bold dark:text-white">
           Recent Works
         </h1>
         {works[activeCard] && (
@@ -258,7 +258,7 @@ export default function RecentWorks({ works }: { works: WorksProps }) {
           </h2>
         )}
         <motion.div
-          className="relative h-full flex gap-8 left-full min-w-fit items-center before:absolute before:left-36 before:h-full before:w-[200%] before:bg-background"
+          className="before:bg-background relative left-full flex h-full min-w-fit items-center gap-8 before:absolute before:left-36 before:h-full before:w-[200%]"
           style={{ x }}
         >
           {works.map((project, index) => (
