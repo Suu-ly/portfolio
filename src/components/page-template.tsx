@@ -5,7 +5,7 @@ import ImageFadeIn from "./image-fade-in";
 import NextProject from "./next-project";
 import ParallaxFade from "./parallax-fade";
 
-const MaxWidthWrapper = ({
+export const MaxWidthWrapper = ({
   className,
   children,
 }: {
@@ -15,7 +15,7 @@ const MaxWidthWrapper = ({
   return (
     <section
       className={cn(
-        "mx-auto max-w-[1600px] px-4 sm:px-12 2xl:px-32",
+        "mx-auto max-w-[1600px] px-4 md:px-16 2xl:px-32",
         className,
       )}
     >
@@ -60,7 +60,7 @@ function MobileScreenshots({
       <ImageFadeIn
         width={428}
         height={926}
-        sizes="(max-width: 639px) 288px, (max-width: 1023px) 268px, 364px"
+        sizes="(max-width: 639px) 288px, (max-width: 1535px) 428px, 364px"
         src={first}
         alt={firstAlt}
         className="aspect-[428/926] w-full overflow-hidden rounded-lg border-2 border-zinc-200 object-cover lg:rounded-xl dark:border-zinc-700"
@@ -68,7 +68,7 @@ function MobileScreenshots({
       <ImageFadeIn
         width={428}
         height={926}
-        sizes="(max-width: 639px) 288px, (max-width: 1023px) 268px, 364px"
+        sizes="(max-width: 639px) 288px, (max-width: 1535px) 428px, 364px"
         src={second}
         alt={secondAlt}
         className="aspect-[428/926] w-full overflow-hidden rounded-lg border-2 border-zinc-200 object-cover lg:rounded-xl dark:border-zinc-700"
@@ -76,7 +76,7 @@ function MobileScreenshots({
       <ImageFadeIn
         width={428}
         height={926}
-        sizes="(max-width: 639px) 288px, (max-width: 1023px) 268px, 364px"
+        sizes="(max-width: 639px) 288px, (max-width: 1535px) 428px, 364px"
         src={third}
         alt={thirdAlt}
         className="hidden aspect-[428/926] w-full overflow-hidden rounded-lg border-2 border-zinc-200 object-cover sm:inline lg:rounded-xl dark:border-zinc-700"
@@ -153,7 +153,7 @@ function PageTemplate({
             <a
               href={url}
               target="_blank"
-              className="group hidden items-center gap-3 justify-self-start rounded-xl bg-zinc-900 p-4 pr-6 text-xl text-sky-50 transition hover:bg-zinc-800 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none sm:flex dark:bg-zinc-800"
+              className="group hidden items-center gap-3 justify-self-start rounded-xl bg-zinc-900 p-4 pr-6 text-xl text-zinc-50 transition hover:bg-zinc-800 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none sm:flex dark:bg-zinc-800"
             >
               <IconCornerDownRight className="size-5 transition-transform group-hover:translate-x-1" />
               Visit Site
@@ -201,7 +201,7 @@ function PageTemplate({
             <a
               href={url}
               target="_blank"
-              className="group col-span-2 inline-flex items-center gap-3 rounded-xl bg-zinc-900 px-6 py-5 text-sky-50 transition hover:bg-zinc-800 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none sm:hidden dark:bg-zinc-800"
+              className="group col-span-2 inline-flex items-center gap-3 rounded-xl bg-zinc-900 px-6 py-5 text-zinc-50 transition hover:bg-zinc-800 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none sm:hidden dark:bg-zinc-800"
             >
               <IconCornerDownRight className="size-5 transition-transform group-hover:translate-x-1" />
               Visit Site

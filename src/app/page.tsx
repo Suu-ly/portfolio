@@ -1,5 +1,6 @@
 import ContactButton from "@/components/contact-button";
 import Footer from "@/components/footer";
+import { MaxWidthWrapper } from "@/components/page-template";
 import ProjectCard from "@/components/project-card";
 import fs from "fs";
 import { join } from "path";
@@ -21,8 +22,8 @@ export default async function Home() {
 
   return (
     <>
-      <main>
-        <section className="flex h-[50vh] w-screen items-center justify-center">
+      <main className="dark:bg-gradient-to-t dark:from-zinc-950 dark:to-zinc-900 dark:to-40%">
+        <section className="flex w-screen items-center justify-center py-32">
           <div className="p-4 text-center">
             <h1 className="font-display mb-8 text-8xl font-bold text-zinc-900 dark:text-zinc-50">
               Lance
@@ -32,27 +33,25 @@ export default async function Home() {
             </p>
           </div>
         </section>
-        <section className="bg-zinc-100 dark:bg-zinc-800">
-          <div className="mx-auto max-w-[1600px] px-4 py-8 sm:p-16 lg:p-32">
-            <h2 className="font-display mb-16 text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-              Recent Works
-            </h2>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {allProjects.map((project) => (
-                <ProjectCard
-                  key={project.importVal.properties.title}
-                  alt={project.importVal.properties.coverAlt}
-                  tagline={project.importVal.properties.tagline}
-                  slug={project.slug}
-                  src={project.importVal.properties.coverImg}
-                  title={project.importVal.properties.title}
-                  type={project.importVal.properties.type}
-                  year={project.importVal.properties.date.getFullYear()}
-                />
-              ))}
-            </div>
+        <MaxWidthWrapper className="py-8 sm:py-16 lg:py-32">
+          <h2 className="font-display mb-16 text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+            Recent Works
+          </h2>
+          <div className="grid gap-x-4 gap-y-16 sm:grid-cols-2">
+            {allProjects.map((project) => (
+              <ProjectCard
+                key={project.importVal.properties.title}
+                alt={project.importVal.properties.coverAlt}
+                tagline={project.importVal.properties.tagline}
+                slug={project.slug}
+                src={project.importVal.properties.coverImg}
+                title={project.importVal.properties.title}
+                type={project.importVal.properties.type}
+                year={project.importVal.properties.date.getFullYear()}
+              />
+            ))}
           </div>
-        </section>
+        </MaxWidthWrapper>
       </main>
       <Footer>
         <ContactButton />

@@ -10,6 +10,7 @@ import ImageFadeIn from "./image-fade-in";
 const animation: Variants = {
   hover: {
     transition: {
+      delayChildren: 0.1,
       staggerChildren: 0.02,
       staggerDirection: -1,
     },
@@ -61,7 +62,7 @@ export default function ProjectCard({
       onPointerEnter={() => setHovering(true)}
       onPointerLeave={() => setHovering(false)}
       className={cn(
-        "group relative flex flex-col gap-3 rounded-xl bg-zinc-50 p-2 sm:rounded-2xl lg:p-4 dark:bg-zinc-950",
+        "group relative flex flex-col gap-3 rounded-xl bg-zinc-100 p-2 sm:rounded-2xl lg:p-4 dark:bg-zinc-950",
         className,
       )}
     >
@@ -69,7 +70,7 @@ export default function ProjectCard({
         <ImageFadeIn
           width={1928}
           height={1446}
-          className="w-full object-cover transition-transform duration-500 group-hover:scale-103"
+          className="w-full object-cover transition duration-500 group-hover:scale-103"
           sizes="(max-width: 639px) 100vw, (max-width: 1535px) 50vw, 644px"
           src={src}
           alt={alt}
