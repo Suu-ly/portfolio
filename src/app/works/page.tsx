@@ -5,7 +5,7 @@ import ProjectCard from "@/components/project-card";
 import fs from "fs";
 import { join } from "path";
 
-export default async function Home() {
+export default async function Works() {
   const allSlugs = fs
     .readdirSync(join(process.cwd(), "src/app/content/"))
     .filter((file) => file.endsWith(".tsx"))
@@ -24,19 +24,16 @@ export default async function Home() {
     <>
       <main className="space-y-8 pt-24 pb-8 sm:space-y-16 sm:pb-16 lg:space-y-32 lg:py-32">
         <section className="flex w-screen items-center justify-center">
-          <div className="p-4 text-center">
-            <h1 className="font-display animate-slide-in mb-8 text-6xl font-bold text-zinc-900 lg:text-8xl dark:text-zinc-50">
-              Lance
+          <div className="animate-slide-in text-main font-display flex gap-2 text-center">
+            <h1 className="text-5xl font-bold sm:text-6xl lg:text-8xl">
+              All Works
             </h1>
-            <p className="animate-slide-in animation-delay-75 text-lg text-zinc-700 lg:text-xl dark:text-zinc-300">
-              Full-stack web developer and designer.
+            <p className="text-lg lg:text-xl">
+              {String(allProjects.length).padStart(2, "0")}
             </p>
           </div>
         </section>
         <MaxWidthWrapper>
-          <h2 className="font-display animate-slide-in animation-delay-150 mb-16 text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-            Recent Works
-          </h2>
           <div className="animate-slide-in animation-delay-225 grid gap-4 sm:grid-cols-2 sm:gap-y-8 lg:gap-y-16">
             {allProjects.map((project) => (
               <ProjectCard

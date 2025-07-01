@@ -101,7 +101,7 @@ export default function ProjectCard({
               }
         }
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
-        className="text-muted absolute top-4 right-4 isolate flex max-w-[calc(100%-2rem)] justify-end rounded-3xl bg-white before:absolute before:-z-10 before:size-[150%] before:bg-zinc-100 lg:top-8 lg:right-8 lg:max-w-[calc(100%-4rem)] dark:bg-black dark:before:bg-black"
+        className="text-body absolute top-4 right-4 isolate flex max-w-[calc(100%-2rem)] justify-end rounded-3xl bg-white before:absolute before:-z-10 before:size-[150%] before:bg-white lg:top-8 lg:right-8 lg:max-w-[calc(100%-4rem)] dark:bg-black dark:before:bg-black"
       >
         <motion.div
           ref={taglineRef}
