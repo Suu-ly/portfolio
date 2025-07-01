@@ -51,11 +51,15 @@ export default function NextProject({
   slug,
 }: NextProjectProps) {
   const [hovering, setHovering] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const active = hovering || focused;
   return (
     <Link
       href={`/project/${slug}`}
-      onPointerEnter={() => setHovering(true)}
-      onPointerLeave={() => setHovering(false)}
+      onMouseEnter={() => setHovering(true)}
+      onMouseLeave={() => setHovering(false)}
+      onFocus={() => setFocused(true)}
+      onBlur={() => setFocused(false)}
       className="group flex flex-col items-center gap-4 overflow-hidden rounded-xl bg-zinc-950 p-2 ring-zinc-900 ring-offset-4 ring-offset-zinc-900 transition-shadow duration-300 hover:ring-4 hover:ring-zinc-700 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none sm:flex-row sm:rounded-2xl lg:p-4"
     >
       <div className="relative flex w-full flex-col p-3 text-center sm:gap-1 lg:gap-3">
@@ -68,7 +72,7 @@ export default function NextProject({
               className="font-display inline-block text-2xl font-bold text-zinc-50 sm:text-4xl lg:text-6xl"
               variants={wordVariants}
               initial="base"
-              animate={hovering ? "base" : "below"}
+              animate={active ? "base" : "below"}
             >
               View
             </motion.span>
@@ -79,7 +83,7 @@ export default function NextProject({
             className="inline-block text-sm font-medium text-sky-500 lg:text-2xl"
             variants={wordVariants}
             initial="base"
-            animate={hovering ? "raised" : "base"}
+            animate={active ? "raised" : "base"}
           >
             Next
           </motion.p>
@@ -88,7 +92,7 @@ export default function NextProject({
           className="font-display text-2xl font-bold text-zinc-50 sm:text-4xl 2xl:text-6xl"
           variants={animation}
           initial="base"
-          animate={hovering ? "raised" : "base"}
+          animate={active ? "raised" : "base"}
         >
           {title.split(" ").map((word, index) => (
             <span key={index} className="[clip-path:inset(15%_0%_-15%_0%)]">
@@ -103,7 +107,7 @@ export default function NextProject({
           <motion.span
             variants={wordVariants}
             initial="base"
-            animate={hovering ? "raised" : "base"}
+            animate={active ? "raised" : "base"}
             className="inline-block"
           >
             {year}

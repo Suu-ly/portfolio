@@ -62,8 +62,8 @@ export default function ProjectCard({
   return (
     <Link
       href={`/project/${slug}`}
-      onPointerEnter={() => setHovering(true)}
-      onPointerLeave={() => setHovering(false)}
+      onMouseEnter={() => setHovering(true)}
+      onMouseLeave={() => setHovering(false)}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
       className={cn(
