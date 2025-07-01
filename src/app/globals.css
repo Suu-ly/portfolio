@@ -3,7 +3,7 @@
 /* @custom-variant dark (&:where(.dark, .dark *)); */
 
 :root {
-  --background: oklch(0.99 0 0);
+  --background: var(--color-zinc-50);
 }
 
 @theme inline {
@@ -29,18 +29,20 @@
 }
 
 @utility animation-delay-* {
+  /* prettier-ignore */
   animation-delay: --value(integer)ms;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: oklch(0.21 0.01 286);
+    --background: var(--color-zinc-950);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  min-height: 100vh;
 }
 
 html.lenis,

@@ -53,16 +53,21 @@ export default function ProjectCard({
   className?: string;
 }) {
   const [hovering, setHovering] = useState(false);
+  const [focused, setFocused] = useState(false);
   const taglineRef = useRef<HTMLDivElement>(null);
   const taglineWords = useMemo(() => tagline.split(/(\s+)/), [tagline]);
+
+  const active = hovering || focused;
 
   return (
     <Link
       href={`/project/${slug}`}
       onPointerEnter={() => setHovering(true)}
       onPointerLeave={() => setHovering(false)}
+      onFocus={() => setFocused(true)}
+      onBlur={() => setFocused(false)}
       className={cn(
-        "group relative flex flex-col gap-3 rounded-xl bg-zinc-100 p-2 sm:rounded-2xl lg:p-4 dark:bg-zinc-950",
+        "group relative flex flex-col gap-3 rounded-xl bg-zinc-100 p-2 transition-shadow focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none sm:rounded-2xl lg:p-4 dark:bg-black",
         className,
       )}
     >
@@ -90,7 +95,7 @@ export default function ProjectCard({
           clipPath: "inset(0 0 calc(100% - 48px) calc(100% - 48px) round 24px)",
         }}
         animate={
-          hovering
+          active
             ? { clipPath: "inset(0 round 24px)" }
             : {
                 clipPath:
@@ -98,12 +103,12 @@ export default function ProjectCard({
               }
         }
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
-        className="absolute top-4 right-4 isolate flex max-w-[calc(100%-2rem)] justify-end rounded-3xl bg-zinc-100 text-zinc-700 before:absolute before:-z-10 before:size-[150%] before:bg-zinc-100 lg:top-8 lg:right-8 lg:max-w-[calc(100%-4rem)] dark:bg-zinc-900 dark:text-zinc-300 dark:before:bg-zinc-900"
+        className="absolute top-4 right-4 isolate flex max-w-[calc(100%-2rem)] justify-end rounded-3xl bg-white text-zinc-600 before:absolute before:-z-10 before:size-[150%] before:bg-zinc-100 lg:top-8 lg:right-8 lg:max-w-[calc(100%-4rem)] dark:bg-black dark:text-zinc-400 dark:before:bg-black"
       >
         <motion.div
           ref={taglineRef}
           variants={animation}
-          animate={hovering ? "hover" : "release"}
+          animate={active ? "hover" : "release"}
           initial="initial"
           className="max-w-full items-center px-4 py-3.5 text-sm"
         >
@@ -132,7 +137,7 @@ export default function ProjectCard({
         <motion.span
           initial={{ opacity: 1, y: 0 }}
           animate={
-            hovering
+            active
               ? { opacity: 0, y: 8 }
               : { opacity: 1, y: 0, transition: { delay: 0.3 } }
           }

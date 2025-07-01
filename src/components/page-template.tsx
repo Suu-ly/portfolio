@@ -130,7 +130,7 @@ function PageTemplate({
   children,
 }: TemplateProps) {
   return (
-    <main className="space-y-8 pt-24 sm:space-y-16 lg:space-y-32">
+    <main className="space-y-8 pt-24 sm:space-y-16 lg:space-y-32 lg:pt-32 dark:bg-zinc-950">
       <MaxWidthWrapper>
         <ParallaxFade>
           <div className="sm:mb-16 lg:mb-32">

@@ -22,14 +22,14 @@ export default async function Home() {
 
   return (
     <>
-      <main className="dark:bg-gradient-to-t dark:from-zinc-950 dark:to-zinc-900 dark:to-40%">
+      <main>
         <section className="flex w-screen items-center justify-center py-32">
           <div className="p-4 text-center">
-            <h1 className="font-display mb-8 text-8xl font-bold text-zinc-900 dark:text-zinc-50">
+            <h1 className="font-display mb-8 text-6xl font-bold text-zinc-900 lg:text-8xl dark:text-zinc-50">
               Lance
             </h1>
-            <p className="text-xl text-zinc-700 dark:text-zinc-300">
-              Full-stack web developer and designer currently working at Tiktok.
+            <p className="text-lg text-zinc-700 lg:text-xl dark:text-zinc-300">
+              Full-stack web developer and designer.
             </p>
           </div>
         </section>

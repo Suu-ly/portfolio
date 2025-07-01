@@ -18,7 +18,7 @@ export default function ContactButton() {
       target="_blank"
       onPointerEnter={() => setHovering(true)}
       onPointerLeave={() => setHovering(false)}
-      className="group flex w-full flex-col gap-32 rounded-xl bg-zinc-950 p-6 pr-4 ring-zinc-900 ring-offset-4 ring-offset-zinc-900 transition-shadow duration-300 hover:ring-4 hover:ring-zinc-700 sm:gap-48 sm:p-8 sm:pr-6 lg:gap-64"
+      className="group flex w-full flex-col gap-32 rounded-xl bg-zinc-950 p-6 pr-4 ring-zinc-900 ring-offset-4 ring-offset-zinc-900 transition-shadow duration-300 hover:ring-4 hover:ring-zinc-700 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none sm:gap-48 sm:p-8 sm:pr-6 lg:gap-64"
     >
       <p className="text-sm font-medium text-sky-500 sm:text-lg">
         Let&apos;s work together

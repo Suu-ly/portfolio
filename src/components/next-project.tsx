@@ -56,7 +56,7 @@ export default function NextProject({
       href={`/project/${slug}`}
       onPointerEnter={() => setHovering(true)}
       onPointerLeave={() => setHovering(false)}
-      className="group flex flex-col items-center gap-4 overflow-hidden rounded-xl bg-zinc-950 p-2 ring-zinc-900 ring-offset-4 ring-offset-zinc-900 transition-shadow duration-300 hover:ring-4 hover:ring-zinc-700 sm:flex-row sm:rounded-2xl lg:p-4"
+      className="group flex flex-col items-center gap-4 overflow-hidden rounded-xl bg-zinc-950 p-2 ring-zinc-900 ring-offset-4 ring-offset-zinc-900 transition-shadow duration-300 hover:ring-4 hover:ring-zinc-700 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none sm:flex-row sm:rounded-2xl lg:p-4"
     >
       <div className="relative flex w-full flex-col p-3 text-center sm:gap-1 lg:gap-3">
         <div
