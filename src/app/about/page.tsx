@@ -40,8 +40,8 @@ const EXPERIENCES = [
 
 export default function About() {
   return (
-    <>
-      <main>
+    <div className="flex min-h-svh flex-col">
+      <main className="grow">
         <MaxWidthWrapper className="grid grid-cols-2 gap-8 pt-24 pb-16 lg:gap-16 lg:py-32">
           <div className="col-span-2 grid grid-cols-[auto_1fr] gap-8 lg:gap-16">
             <div className="animate-slide-in col-span-2 sm:col-auto sm:row-span-2 sm:self-center">
@@ -106,6 +106,6 @@ export default function About() {
       <Footer>
         <ContactButton />
       </Footer>
-    </>
+    </div>
   );
 }

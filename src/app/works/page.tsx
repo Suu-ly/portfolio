@@ -21,20 +21,20 @@ export default async function Works() {
   );
 
   return (
-    <>
-      <main className="space-y-8 pt-24 pb-8 sm:space-y-16 sm:pb-16 lg:space-y-32 lg:py-32">
+    <div className="flex min-h-svh flex-col">
+      <main className="grow space-y-8 pt-24 pb-8 sm:space-y-16 sm:pb-16 lg:space-y-32 lg:py-32">
         <section className="flex w-screen items-center justify-center">
-          <div className="animate-slide-in text-main font-display flex gap-2 text-center">
-            <h1 className="text-5xl font-bold sm:text-6xl lg:text-8xl">
+          <div className="text-main font-display flex gap-2 text-center">
+            <h1 className="animate-slide-in text-5xl font-bold sm:text-6xl lg:text-8xl">
               All Works
             </h1>
-            <p className="text-lg lg:text-xl">
+            <p className="animate-slide-in animation-delay-75 text-lg lg:text-xl">
               {String(allProjects.length).padStart(2, "0")}
             </p>
           </div>
         </section>
         <MaxWidthWrapper>
-          <div className="animate-slide-in animation-delay-225 grid gap-4 sm:grid-cols-2 sm:gap-y-8 lg:gap-y-16">
+          <div className="animate-slide-in animation-delay-150 grid gap-4 sm:grid-cols-2 sm:gap-y-8 lg:gap-y-16">
             {allProjects.map((project) => (
               <ProjectCard
                 key={project.importVal.properties.title}
@@ -53,6 +53,6 @@ export default async function Works() {
       <Footer>
         <ContactButton />
       </Footer>
-    </>
+    </div>
   );
 }

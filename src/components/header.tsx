@@ -10,10 +10,10 @@ export default function Header() {
   const [backdrop, setBackdrop] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (y) => {
-    setBackdrop(y > 128);
+    setBackdrop(y > 96);
   });
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex justify-between gap-4 overflow-hidden p-4">
+    <header className="fixed inset-x-0 top-0 z-50 flex justify-between gap-4 p-4">
       <div
         role="presentation"
         className={cn(

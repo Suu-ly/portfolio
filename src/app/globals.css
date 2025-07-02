@@ -57,7 +57,6 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  min-height: 100vh;
 }
 
 html.lenis,

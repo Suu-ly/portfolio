@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex h-svh flex-col">
       <main className="grow">
         <section className="flex h-full w-screen flex-col items-center justify-center gap-12 py-32">
           <div className="p-4 text-center">

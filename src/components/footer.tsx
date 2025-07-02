@@ -6,7 +6,7 @@ export default function Footer({ children }: { children?: React.ReactNode }) {
   return (
     <footer className="flex flex-col gap-12 bg-zinc-900 pt-8 pb-4 sm:pt-16 lg:pt-32 lg:pb-8">
       <MaxWidthWrapper className="w-full">{children}</MaxWidthWrapper>
-      <div className="mx-4 flex flex-col gap-4 sm:flex-row sm:gap-32 lg:mx-12 2xl:mx-32">
+      <MaxWidthWrapper className="flex w-full flex-col gap-4 sm:flex-row sm:gap-32">
         <nav>
           <span className="mb-2 text-sm font-medium text-zinc-500">
             Explore
@@ -64,11 +64,11 @@ export default function Footer({ children }: { children?: React.ReactNode }) {
             </li>
           </ul>
         </div>
-      </div>
-      <div className="mx-4 flex justify-between text-sm font-medium text-zinc-500 lg:mx-12 2xl:mx-32">
+      </MaxWidthWrapper>
+      <MaxWidthWrapper className="flex w-full justify-between text-sm font-medium text-zinc-500">
         <span>&copy; {new Date().getFullYear()} Lance</span>
         <span>Singapore</span>
-      </div>
+      </MaxWidthWrapper>
     </footer>
   );
 }
