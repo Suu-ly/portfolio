@@ -17,8 +17,8 @@ export default function Header() {
       <div
         role="presentation"
         className={cn(
-          "pointer-events-none absolute inset-0 -z-10 h-[200%] bg-gradient-to-b from-transparent to-transparent to-45% transition duration-1000",
-          backdrop && "from-background",
+          "pointer-events-none absolute inset-0 -z-10 h-[200%] bg-gradient-to-b from-transparent via-transparent via-30% to-transparent to-50% transition duration-1000",
+          backdrop && "from-background via-background/20",
         )}
       >
         <div
@@ -30,19 +30,19 @@ export default function Header() {
         <div
           className={cn(
             "absolute inset-x-0 top-0 h-full mask-t-from-90% mask-b-from-20% mask-b-to-30% backdrop-blur-none transition-all duration-1000",
-            backdrop && "backdrop-blur-[6px]",
-          )}
-        ></div>
-        <div
-          className={cn(
-            "absolute inset-x-0 top-0 h-full mask-t-from-80% mask-t-to-90% mask-b-from-30% mask-b-to-40% backdrop-blur-none transition-all duration-1000",
             backdrop && "backdrop-blur-xs",
           )}
         ></div>
         <div
           className={cn(
-            "absolute inset-x-0 top-0 h-full mask-t-from-70% mask-t-to-80% mask-b-from-40% mask-b-to-50% backdrop-blur-none transition-all duration-1000",
+            "absolute inset-x-0 top-0 h-full mask-t-from-80% mask-t-to-90% mask-b-from-30% mask-b-to-40% backdrop-blur-none transition-all duration-1000",
             backdrop && "backdrop-blur-[2px]",
+          )}
+        ></div>
+        <div
+          className={cn(
+            "absolute inset-x-0 top-0 h-full mask-t-from-70% mask-t-to-80% mask-b-from-40% mask-b-to-50% backdrop-blur-none transition-all duration-1000",
+            backdrop && "backdrop-blur-[1px]",
           )}
         ></div>
       </div>
