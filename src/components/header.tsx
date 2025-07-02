@@ -15,11 +15,37 @@ export default function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 flex justify-between gap-4 overflow-hidden p-4">
       <div
+        role="presentation"
         className={cn(
-          "from-background pointer-events-none absolute inset-0 -z-10 h-[200%] bg-gradient-to-b to-transparent to-50% mask-b-from-0 mask-b-to-50% opacity-0 backdrop-blur-xl transition-opacity duration-1000",
-          backdrop && "opacity-100",
+          "pointer-events-none absolute inset-0 -z-10 h-[200%] bg-gradient-to-b from-transparent to-transparent to-45% transition duration-1000",
+          backdrop && "from-background",
         )}
-      ></div>
+      >
+        <div
+          className={cn(
+            "absolute inset-x-0 top-0 h-full mask-b-from-10% mask-b-to-20% backdrop-blur-none transition-all duration-1000",
+            backdrop && "backdrop-blur-sm",
+          )}
+        ></div>
+        <div
+          className={cn(
+            "absolute inset-x-0 top-0 h-full mask-t-from-90% mask-b-from-20% mask-b-to-30% backdrop-blur-none transition-all duration-1000",
+            backdrop && "backdrop-blur-[6px]",
+          )}
+        ></div>
+        <div
+          className={cn(
+            "absolute inset-x-0 top-0 h-full mask-t-from-80% mask-t-to-90% mask-b-from-30% mask-b-to-40% backdrop-blur-none transition-all duration-1000",
+            backdrop && "backdrop-blur-xs",
+          )}
+        ></div>
+        <div
+          className={cn(
+            "absolute inset-x-0 top-0 h-full mask-t-from-70% mask-t-to-80% mask-b-from-40% mask-b-to-50% backdrop-blur-none transition-all duration-1000",
+            backdrop && "backdrop-blur-[2px]",
+          )}
+        ></div>
+      </div>
       <Link
         href="/"
         className="hover:text-main relative rounded font-medium text-zinc-800 transition focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none dark:text-zinc-100"
