@@ -25,10 +25,12 @@ const hack = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://lanceyeo.com"),
   title: {
     template: "%s – Lance Yeo",
     default: "Lance Yeo – Web Developer",
   },
+  description: "Hey I'm Lance, I design and develop websites!",
 };
 
 export default function RootLayout({
