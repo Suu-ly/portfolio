@@ -25,8 +25,10 @@ export default async function Home() {
     <div className="flex min-h-svh flex-col">
       <main className="grow space-y-32 pt-32 pb-8 sm:pb-16 lg:py-32">
         <MaxWidthWrapper className="flex w-full flex-col justify-center p-4">
-          <div className="animate-slide-in mb-6">
-            <HelloThere />
+          <div className="animate-slide-in mb-6 self-start">
+            <div className="animate-wiggle self-start">
+              <HelloThere />
+            </div>
           </div>
           <h1 className="font-display animate-slide-in text-main mb-8 text-6xl font-bold lg:text-8xl">
             Lance Yeo
@@ -36,7 +38,7 @@ export default async function Home() {
             that feel <i className="text-accent">just right</i>.
           </p>
           <p className="animate-slide-in animation-delay-150 text-muted text-sm lg:text-lg">
-            Currently working as a frontend developer at Tiktok
+            Currently working as a frontend developer at Tiktok.
           </p>
         </MaxWidthWrapper>
         <MaxWidthWrapper>
