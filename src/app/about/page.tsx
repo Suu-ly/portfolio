@@ -52,6 +52,7 @@ export default function About() {
                 height={256}
                 sizes="(max-width: 639px) 128px, 256px"
                 className="size-32 rounded-full object-cover sm:size-64"
+                priority
               />
             </div>
             <h1 className="font-display animate-slide-in animation-delay-75 col-span-2 text-5xl font-bold text-zinc-900 sm:col-auto lg:text-6xl dark:text-zinc-50">
@@ -84,6 +85,7 @@ export default function About() {
                     src={experience.src}
                     alt={experience.alt}
                     className="rounded"
+                    loading="lazy"
                   />
                   <div className="flex flex-col">
                     <h3 className="font-medium text-zinc-900 dark:text-zinc-50">

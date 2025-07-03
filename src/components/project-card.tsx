@@ -79,6 +79,7 @@ export default function ProjectCard({
           sizes="(max-width: 639px) 100vw, (max-width: 1535px) 50vw, 644px"
           src={src}
           alt={alt}
+          loading="lazy"
         />
       </div>
       <div className="space-y-1 p-2">

@@ -63,6 +63,7 @@ function MobileScreenshots({
         src={first}
         alt={firstAlt}
         className="border-border w-full overflow-hidden rounded-lg border-2 lg:rounded-xl"
+        loading="lazy"
       />
       <ImageFadeIn
         width={428}
@@ -71,6 +72,7 @@ function MobileScreenshots({
         src={second}
         alt={secondAlt}
         className="border-border w-full overflow-hidden rounded-lg border-2 lg:rounded-xl"
+        loading="lazy"
       />
       <ImageFadeIn
         width={428}
@@ -79,6 +81,7 @@ function MobileScreenshots({
         src={third}
         alt={thirdAlt}
         className="border-border hidden w-full overflow-hidden rounded-lg border-2 sm:inline lg:rounded-xl"
+        loading="lazy"
       />
     </div>
   );
@@ -107,6 +110,7 @@ function DesktopScreenshot({ src, alt }: { src: string; alt: string }) {
       className="w-full rounded-lg lg:rounded-xl"
       src={src}
       alt={alt}
+      loading="lazy"
     />
   );
 }
