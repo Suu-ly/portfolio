@@ -10,41 +10,21 @@ export default function Header() {
   const [backdrop, setBackdrop] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (y) => {
-    setBackdrop(y > 96);
+    setBackdrop(y > 128);
   });
   return (
     <header className="fixed inset-x-0 top-0 z-50 flex justify-between gap-4 p-4">
       <div
         role="presentation"
         className={cn(
-          "pointer-events-none absolute inset-0 -z-10 h-[200%] bg-gradient-to-b from-transparent via-transparent via-30% to-transparent to-50% transition duration-1000",
+          "pointer-events-none absolute inset-0 -z-10 h-full bg-gradient-to-b from-transparent via-transparent via-60% to-transparent transition duration-1000",
           backdrop && "from-background via-background/20",
         )}
       >
-        <div
-          className={cn(
-            "absolute inset-x-0 top-0 h-full mask-b-from-10% mask-b-to-20% backdrop-blur-none transition-all duration-1000",
-            backdrop && "backdrop-blur-sm",
-          )}
-        ></div>
-        <div
-          className={cn(
-            "absolute inset-x-0 top-0 h-full mask-t-from-90% mask-b-from-20% mask-b-to-30% backdrop-blur-none transition-all duration-1000",
-            backdrop && "backdrop-blur-xs",
-          )}
-        ></div>
-        <div
-          className={cn(
-            "absolute inset-x-0 top-0 h-full mask-t-from-80% mask-t-to-90% mask-b-from-30% mask-b-to-40% backdrop-blur-none transition-all duration-1000",
-            backdrop && "backdrop-blur-[2px]",
-          )}
-        ></div>
-        <div
-          className={cn(
-            "absolute inset-x-0 top-0 h-full mask-t-from-70% mask-t-to-80% mask-b-from-40% mask-b-to-50% backdrop-blur-none transition-all duration-1000",
-            backdrop && "backdrop-blur-[1px]",
-          )}
-        ></div>
+        <div className="absolute inset-x-0 top-0 h-full mask-b-from-20% mask-b-to-40% backdrop-blur-sm"></div>
+        <div className="absolute inset-x-0 top-0 h-full mask-t-from-80% mask-b-from-40% mask-b-to-60% backdrop-blur-xs"></div>
+        <div className="absolute inset-x-0 top-0 h-full mask-t-from-60% mask-t-to-80% mask-b-from-60% mask-b-to-80% backdrop-blur-[2px]"></div>
+        <div className="absolute inset-x-0 top-0 h-full mask-t-from-40% mask-t-to-60% mask-b-from-80% backdrop-blur-[1px]"></div>
       </div>
       <Link
         href="/"
