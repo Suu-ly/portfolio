@@ -34,6 +34,7 @@ export default function ContactButton() {
           className="relative isolate"
         >
           <motion.span
+            initial={{ height: 0, width: 0 }}
             animate={
               active
                 ? { height: iconSize, width: iconSize }
@@ -63,6 +64,7 @@ export default function ContactButton() {
           className="relative isolate"
         >
           <motion.span
+            initial={{ height: iconSize, width: iconSize }}
             animate={
               active
                 ? { height: 0, width: 0 }

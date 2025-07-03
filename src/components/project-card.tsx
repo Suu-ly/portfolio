@@ -75,7 +75,7 @@ export default function ProjectCard({
         <ImageFadeIn
           width={1928}
           height={1446}
-          className="w-full object-cover transition duration-500 group-hover:scale-103"
+          className="w-full transition duration-500 group-hover:scale-103"
           sizes="(max-width: 639px) 100vw, (max-width: 1535px) 50vw, 644px"
           src={src}
           alt={alt}

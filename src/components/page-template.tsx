@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 import { IconCornerDownRight } from "@tabler/icons-react";
 import ImageFadeIn from "./image-fade-in";
 import NextProject from "./next-project";
-import ParallaxFade from "./parallax-fade";
 
 export const MaxWidthWrapper = ({
   className,
@@ -63,7 +62,7 @@ function MobileScreenshots({
         sizes="(max-width: 639px) 288px, (max-width: 1535px) 428px, 364px"
         src={first}
         alt={firstAlt}
-        className="border-border aspect-[428/926] w-full overflow-hidden rounded-lg border-2 object-cover lg:rounded-xl"
+        className="border-border w-full overflow-hidden rounded-lg border-2 lg:rounded-xl"
       />
       <ImageFadeIn
         width={428}
@@ -71,7 +70,7 @@ function MobileScreenshots({
         sizes="(max-width: 639px) 288px, (max-width: 1535px) 428px, 364px"
         src={second}
         alt={secondAlt}
-        className="border-border aspect-[428/926] w-full overflow-hidden rounded-lg border-2 object-cover lg:rounded-xl"
+        className="border-border w-full overflow-hidden rounded-lg border-2 lg:rounded-xl"
       />
       <ImageFadeIn
         width={428}
@@ -79,7 +78,7 @@ function MobileScreenshots({
         sizes="(max-width: 639px) 288px, (max-width: 1535px) 428px, 364px"
         src={third}
         alt={thirdAlt}
-        className="border-border hidden aspect-[428/926] w-full overflow-hidden rounded-lg border-2 object-cover sm:inline lg:rounded-xl"
+        className="border-border hidden w-full overflow-hidden rounded-lg border-2 sm:inline lg:rounded-xl"
       />
     </div>
   );
@@ -105,7 +104,7 @@ function DesktopScreenshot({ src, alt }: { src: string; alt: string }) {
       width={1920}
       height={1080}
       sizes="(max-width: 1535px) 100vw, 1344px"
-      className="aspect-video w-full rounded-lg lg:rounded-xl"
+      className="w-full rounded-lg lg:rounded-xl"
       src={src}
       alt={alt}
     />
@@ -199,14 +198,15 @@ function PageTemplate({
           </a>
         </div>
       </MaxWidthWrapper>
-      <div className="animate-slide-in animation-delay-225 relative mx-auto aspect-[4/3] w-full max-w-[1600px] overflow-hidden">
+      <div className="animate-slide-in animation-delay-225 mx-auto w-full max-w-[1600px]">
         <ImageFadeIn
           width={1928}
           height={1446}
+          priority
           sizes="(max-width: 1600px) 100vw, 1600px"
           src={coverImg}
           alt={coverAlt}
-          className="absolute size-full object-cover"
+          className="w-full"
         />
       </div>
       <div className="bg-zinc-100 py-8 sm:py-16 lg:py-32 dark:bg-zinc-800">

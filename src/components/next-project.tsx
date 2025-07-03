@@ -71,7 +71,7 @@ export default function NextProject({
             <motion.span
               className="font-display inline-block text-2xl font-bold text-zinc-50 sm:text-4xl lg:text-6xl"
               variants={wordVariants}
-              initial="base"
+              initial="below"
               animate={active ? "base" : "below"}
             >
               View
@@ -118,7 +118,7 @@ export default function NextProject({
         <ImageFadeIn
           width={1928}
           height={1446}
-          className="w-full object-cover transition duration-500 group-hover:scale-103"
+          className="w-full transition duration-500 group-hover:scale-103"
           sizes="(max-width: 639px) 100vw, (max-width: 1535px) 50vw, 644px"
           src={src}
           alt={alt}
