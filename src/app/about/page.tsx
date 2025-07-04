@@ -3,6 +3,7 @@ import Footer from "@/components/footer";
 import ImageFadeIn from "@/components/image-fade-in";
 import { MaxWidthWrapper } from "@/components/page-template";
 import { Separator } from "@/components/ui/separator";
+import { Metadata } from "next";
 
 const EXPERIENCES = [
   {
@@ -37,6 +38,14 @@ const EXPERIENCES = [
     isIntern: true,
   },
 ];
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Find out a little bit more about me!",
+  openGraph: {
+    url: "/about",
+  },
+};
 
 export default function About() {
   return (

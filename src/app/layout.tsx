@@ -31,6 +31,10 @@ export const metadata: Metadata = {
     default: "Lance Yeo – Web Developer",
   },
   description: "Hey I'm Lance, I design and develop websites!",
+  openGraph: {
+    siteName: "Lance Yeo",
+    url: "/",
+  },
 };
 
 export default function RootLayout({

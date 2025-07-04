@@ -14,7 +14,10 @@ export async function generateMetadata({
 
   return {
     title: properties.title,
-    description: properties.tagline,
+    description: `View project: ${properties.tagline}`,
+    openGraph: {
+      url: `/project/${slug}`,
+    },
   };
 }
 

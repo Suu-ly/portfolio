@@ -3,7 +3,16 @@ import Footer from "@/components/footer";
 import { MaxWidthWrapper } from "@/components/page-template";
 import ProjectCard from "@/components/project-card";
 import fs from "fs";
+import { Metadata } from "next";
 import { join } from "path";
+
+export const metadata: Metadata = {
+  title: "All Works",
+  description: "Check out some of my past projects",
+  openGraph: {
+    url: "/works",
+  },
+};
 
 export default async function Works() {
   const allSlugs = fs
