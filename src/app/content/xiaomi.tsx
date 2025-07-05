@@ -1,4 +1,5 @@
 import {
+  DesktopScreenshot,
   MobileScreenshots,
   PageTemplate,
   VideoTablet,
@@ -32,6 +33,14 @@ export default function Outbound() {
         secondAlt="Mobile screenshot of the help and FAQ page."
         third="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images/Xiaomi_mobile_3.png"
         thirdAlt="Mobile screenshot of the sustainability goals of Xiaomi."
+      />
+      <DesktopScreenshot
+        src="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images/Xiaomi_1.png"
+        alt="Screenshot of the blog page of website."
+      />
+      <DesktopScreenshot
+        src="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images/Xiaomi_2.png"
+        alt="Screenshot of product page of website."
       />
     </PageTemplate>
   );

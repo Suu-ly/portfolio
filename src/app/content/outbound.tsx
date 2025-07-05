@@ -1,4 +1,5 @@
 import {
+  DesktopScreenshot,
   MobileScreenshots,
   PageTemplate,
   VideoPlayer,
@@ -34,6 +35,10 @@ export default function Outbound() {
         thirdAlt="Mobile screenshot of the Outbound trip planner's itinerary planner screen"
       />
       <VideoPlayer src="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images/Outbound_planner.mp4" />
+      <DesktopScreenshot
+        src="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images/Outbound_1.png"
+        alt="Screenshot of itinerary planner."
+      />
     </PageTemplate>
   );
 }

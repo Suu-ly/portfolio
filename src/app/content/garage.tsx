@@ -1,4 +1,5 @@
 import {
+  DesktopScreenshot,
   MobileScreenshots,
   PageTemplate,
   VideoTablet,
@@ -32,6 +33,10 @@ export default function Outbound() {
         secondAlt="Mobile screenshot of a page about the internal orientation camp of Garage."
         third="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images/Garage_mobile_3.png"
         thirdAlt="Mobile screenshot of one of Garage's projects, Learnr."
+      />
+      <DesktopScreenshot
+        src="https://poaggtkhfuxbvwysdoyo.supabase.co/storage/v1/object/public/images/Garage_1.png"
+        alt="Screenshot of events page of website."
       />
     </PageTemplate>
   );
