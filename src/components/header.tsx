@@ -5,7 +5,11 @@ import { useMotionValueEvent, useScroll } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Header() {
+export default function Header({
+  ref,
+}: {
+  ref: React.RefObject<HTMLDivElement>;
+}) {
   const { scrollY } = useScroll();
   const [backdrop, setBackdrop] = useState(false);
 
@@ -13,7 +17,10 @@ export default function Header() {
     setBackdrop(y > 128);
   });
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex justify-between gap-4 p-4">
+    <header
+      ref={ref}
+      className="fixed inset-x-0 top-0 z-50 flex justify-between gap-4 p-4"
+    >
       <div
         role="presentation"
         className={cn(

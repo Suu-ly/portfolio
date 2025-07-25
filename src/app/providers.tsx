@@ -1,5 +1,6 @@
 "use client";
 
+import Header from "@/components/header";
 import { useLenis } from "lenis/react";
 import { animate } from "motion/react";
 import { TransitionRouter } from "next-transition-router";
@@ -8,19 +9,26 @@ import { useRef } from "react";
 export function Providers({ children }: { children: React.ReactNode }) {
   const Lenis = useLenis();
   const wrapperRef = useRef<HTMLDivElement>(null!);
+  const headerRef = useRef<HTMLDivElement>(null!);
 
   return (
     <TransitionRouter
       auto
       leave={(next) => {
+        const node = wrapperRef.current;
+        const scrollbarWidth = window.innerWidth - node.clientWidth;
         Lenis?.stop();
+        node.style.paddingRight = `${scrollbarWidth}px`;
+        headerRef.current.style.marginRight = `${scrollbarWidth}px`;
         animate(
-          wrapperRef.current,
+          node,
           { opacity: [1, 0] },
           { duration: 0.15, onComplete: next },
         );
       }}
       enter={(next) => {
+        headerRef.current.style.marginRight = "";
+        wrapperRef.current.style.paddingRight = "";
         Lenis?.start();
         animate(
           wrapperRef.current,
@@ -29,6 +37,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         );
       }}
     >
+      <Header ref={headerRef} />
       <div ref={wrapperRef}>{children}</div>
     </TransitionRouter>
   );

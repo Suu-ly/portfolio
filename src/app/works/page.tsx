@@ -32,7 +32,7 @@ export default async function Works() {
   return (
     <div className="flex min-h-svh flex-col">
       <main className="grow space-y-8 pt-24 pb-8 sm:space-y-16 sm:pb-16 lg:space-y-32 lg:py-32">
-        <section className="flex w-screen items-center justify-center">
+        <section className="flex w-full items-center justify-center">
           <div className="text-main font-display flex gap-2 text-center">
             <h1 className="animate-slide-in text-5xl font-bold sm:text-6xl lg:text-8xl">
               All Works
