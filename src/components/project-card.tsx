@@ -60,14 +60,13 @@ export default function ProjectCard({
   const active = hovering || focused;
 
   return (
-    <Link
-      href={`/project/${slug}`}
+    <div
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
       className={cn(
-        "group relative flex flex-col gap-3 rounded-xl bg-zinc-100 p-2 transition-shadow focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none sm:rounded-2xl lg:p-4 dark:bg-black",
+        "group relative flex flex-col gap-3 rounded-xl bg-zinc-100 p-2 transition-shadow focus-within:ring-2 focus-within:ring-zinc-400 focus-within:outline-none sm:rounded-2xl lg:p-4 dark:bg-black",
         className,
       )}
     >
@@ -87,7 +86,12 @@ export default function ProjectCard({
           <p>{type}</p>
           <p>{year}</p>
         </div>
-        <p className="font-display text-main text-2xl font-bold">{title}</p>
+        <Link
+          href={`/project/${slug}`}
+          className="font-display text-main text-2xl font-bold focus-visible:outline-none"
+        >
+          {title} <span className="absolute inset-0"></span>
+        </Link>
       </div>
       <motion.div
         initial={{
@@ -145,6 +149,6 @@ export default function ProjectCard({
           <IconCornerDownRight />
         </motion.span>
       </motion.div>
-    </Link>
+    </div>
   );
 }
