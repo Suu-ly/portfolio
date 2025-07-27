@@ -2,8 +2,13 @@
 
 import { useMediaQuery } from "@/lib/use-media-query";
 import { IconArrowUpRight } from "@tabler/icons-react";
-import { motion } from "motion/react";
+import { motion, Transition } from "motion/react";
 import { useState } from "react";
+
+const SPRING_SETTINGS: Transition = {
+  type: "spring",
+  stiffness: 150,
+};
 
 export default function ContactButton() {
   const [hovering, setHovering] = useState(false);
@@ -27,10 +32,11 @@ export default function ContactButton() {
       <p className="text-sm font-medium text-sky-500 sm:text-lg">
         Let&apos;s work together
       </p>
-      <div className="flex items-center justify-between text-zinc-50">
+      <div className="relative flex items-center justify-between text-zinc-50">
         <motion.div
           role="presentation"
           animate={active ? { width: iconSize } : { width: 0 }}
+          transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
           className="relative isolate"
         >
           <motion.span
@@ -40,7 +46,11 @@ export default function ContactButton() {
                 ? { height: iconSize, width: iconSize }
                 : { height: 0, width: 0 }
             }
-            transition={{ type: "spring", stiffness: 150 }}
+            transition={
+              active
+                ? SPRING_SETTINGS
+                : { duration: 0.2, ease: [0.33, 1, 0.68, 1] }
+            }
             className="absolute top-1/2 left-1/2 -z-10 inline-flex -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full bg-zinc-900"
           >
             <motion.span
@@ -52,33 +62,32 @@ export default function ContactButton() {
           </motion.span>
         </motion.div>
         <motion.p
-          animate={active ? { marginLeft: 16 } : { marginLeft: 0 }}
-          transition={{ type: "spring", stiffness: 150 }}
+          animate={
+            active ? { marginLeft: isLg || isSm ? 16 : 8 } : { marginLeft: 0 }
+          }
+          transition={SPRING_SETTINGS}
           className="font-display grow text-2xl font-bold sm:text-4xl lg:text-6xl"
         >
           Contact Me
         </motion.p>
         <motion.div
-          role="presentation"
-          animate={active ? { width: 0 } : { width: iconSize }}
-          className="relative isolate"
+          animate={
+            active
+              ? { height: 0, width: 0 }
+              : { height: iconSize, width: iconSize }
+          }
+          transition={
+            active
+              ? { duration: 0.2, ease: [0.33, 1, 0.68, 1] }
+              : SPRING_SETTINGS
+          }
+          className="absolute top-1/2 right-0 inline-flex size-8 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full bg-zinc-900 sm:size-10 lg:size-15"
         >
           <motion.span
-            initial={{ height: iconSize, width: iconSize }}
-            animate={
-              active
-                ? { height: 0, width: 0 }
-                : { height: iconSize, width: iconSize }
-            }
-            transition={{ type: "spring", stiffness: 150 }}
-            className="absolute top-1/2 left-1/2 -z-10 inline-flex -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full bg-zinc-900"
+            animate={active ? { x: 16, y: -16 } : { x: 0, y: 0 }}
+            transition={{ type: "spring", stiffness: 200 }}
           >
-            <motion.span
-              animate={active ? { x: 16, y: -16 } : { x: 0, y: 0 }}
-              transition={{ type: "spring", stiffness: 200 }}
-            >
-              <IconArrowUpRight className="lg:size-8" />
-            </motion.span>
+            <IconArrowUpRight className="lg:size-8" />
           </motion.span>
         </motion.div>
       </div>
