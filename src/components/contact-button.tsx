@@ -57,7 +57,10 @@ export default function ContactButton() {
               animate={active ? { x: 0, y: 0 } : { x: -16, y: 16 }}
               transition={{ type: "spring", stiffness: 200 }}
             >
-              <IconArrowUpRight className="lg:size-8" />
+              <IconArrowUpRight
+                className="lg:size-8"
+                aria-label="Arrow pointing up right"
+              />
             </motion.span>
           </motion.span>
         </motion.div>
@@ -87,7 +90,10 @@ export default function ContactButton() {
             animate={active ? { x: 16, y: -16 } : { x: 0, y: 0 }}
             transition={{ type: "spring", stiffness: 200 }}
           >
-            <IconArrowUpRight className="lg:size-8" />
+            <IconArrowUpRight
+              className="lg:size-8"
+              aria-label="Arrow pointing up right"
+            />
           </motion.span>
         </motion.div>
       </div>

@@ -11,7 +11,7 @@ const animation: Variants = {
   hover: {
     transition: {
       delayChildren: 0.1,
-      staggerChildren: 0.02,
+      staggerChildren: 0.03,
       staggerDirection: -1,
     },
   },
@@ -108,24 +108,17 @@ export default function ProjectCard({
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
         className="text-body absolute top-4 right-4 isolate flex max-w-[calc(100%-2rem)] justify-end rounded-3xl bg-white before:absolute before:-z-10 before:size-[150%] before:bg-white lg:top-8 lg:right-8 lg:max-w-[calc(100%-4rem)] dark:bg-black dark:before:bg-black"
       >
-        <motion.div
+        <p className="sr-only">{tagline}</p>
+        <motion.p
+          aria-hidden
           ref={taglineRef}
           variants={animation}
           animate={active ? "hover" : "release"}
           initial="initial"
-          className="max-w-full items-center px-4 py-3.5 text-sm"
+          className="inline max-w-full items-center px-4 py-3.5 text-sm"
         >
           {taglineWords.map((word, index) => {
-            if (word === " ")
-              return (
-                <motion.span
-                  key={index}
-                  variants={wordVariants}
-                  className="inline"
-                >
-                  {word}
-                </motion.span>
-              );
+            if (word === " ") return word;
             return (
               <motion.span
                 key={index}
@@ -136,7 +129,7 @@ export default function ProjectCard({
               </motion.span>
             );
           })}
-        </motion.div>
+        </motion.p>
         <motion.span
           initial={{ opacity: 1, y: 0 }}
           animate={
@@ -146,7 +139,7 @@ export default function ProjectCard({
           }
           className="absolute top-3 right-3"
         >
-          <IconCornerDownRight />
+          <IconCornerDownRight aria-label="Down right arrow" />
         </motion.span>
       </motion.div>
     </div>

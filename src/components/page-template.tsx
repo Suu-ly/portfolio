@@ -135,7 +135,7 @@ function PageTemplate({
   return (
     <main className="space-y-8 pt-24 sm:space-y-16 lg:space-y-32 lg:pt-32 dark:bg-zinc-950">
       <MaxWidthWrapper>
-        <div className="sm:mb-16 lg:mb-32">
+        <div className="mb-1 sm:mb-16 lg:mb-32">
           <div className="animate-slide-in mb-4 flex items-center justify-between gap-4">
             <span className="text-muted text-xs font-medium sm:text-base lg:text-lg">
               {type}
@@ -197,7 +197,10 @@ function PageTemplate({
             target="_blank"
             className="group col-span-2 inline-flex items-center gap-3 rounded-xl bg-zinc-900 px-6 py-5 text-zinc-50 transition hover:bg-zinc-800 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none sm:hidden dark:bg-zinc-800"
           >
-            <IconCornerDownRight className="size-5 transition-transform group-hover:translate-x-1" />
+            <IconCornerDownRight
+              className="size-5 transition-transform group-hover:translate-x-1"
+              aria-label="Down right arrow"
+            />
             Visit Site
           </a>
         </div>

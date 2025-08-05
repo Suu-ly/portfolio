@@ -88,20 +88,27 @@ export default function NextProject({
             Next
           </motion.p>
         </div>
+        <h3 className="sr-only">{title}</h3>
         <motion.h3
+          aria-hidden
           className="font-display text-2xl font-bold text-zinc-50 sm:text-4xl 2xl:text-6xl"
           variants={animation}
           initial="base"
           animate={active ? "raised" : "base"}
         >
-          {title.split(" ").map((word, index) => (
-            <span key={index} className="[clip-path:inset(15%_0%_-15%_0%)]">
-              {index > 0 ? " " : null}
-              <motion.span variants={wordVariants} className="inline-block">
-                {word}
-              </motion.span>
-            </span>
-          ))}
+          {title.split(/(\s+)/).map((word, index) => {
+            if (word === " ") return word;
+            return (
+              <span
+                key={index}
+                className="inline-block [clip-path:inset(15%_0%_-15%_0%)]"
+              >
+                <motion.span variants={wordVariants} className="inline-block">
+                  {word}
+                </motion.span>
+              </span>
+            );
+          })}
         </motion.h3>
         <p className="hidden text-sm font-medium text-zinc-400 [clip-path:inset(15%_0%_-15%_0%)] sm:inline lg:text-2xl">
           <motion.span

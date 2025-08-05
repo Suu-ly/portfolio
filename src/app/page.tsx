@@ -24,7 +24,7 @@ export default async function Home() {
   return (
     <div className="flex min-h-svh flex-col">
       <main className="grow space-y-32 pt-32 pb-8 sm:pb-16 lg:py-32">
-        <MaxWidthWrapper className="flex w-full flex-col justify-center p-4">
+        <MaxWidthWrapper className="flex w-full flex-col justify-center overflow-x-hidden p-4">
           <div className="animate-slide-in mb-6 self-start">
             <div className="animate-wiggle self-start">
               <HelloThere />
