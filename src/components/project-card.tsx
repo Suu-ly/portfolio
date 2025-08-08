@@ -90,7 +90,7 @@ export default function ProjectCard({
           href={`/project/${slug}`}
           className="font-display text-main text-2xl font-bold focus-visible:outline-none"
         >
-          {title} <span className="absolute inset-0"></span>
+          {title} <span className="absolute inset-0 z-10"></span>
         </Link>
       </div>
       <motion.div
