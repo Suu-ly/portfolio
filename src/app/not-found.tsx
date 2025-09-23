@@ -16,7 +16,7 @@ export default function Page() {
           </div>
           <Link
             href="/"
-            className="inline-flex items-center rounded-xl bg-zinc-900 p-4 pr-6 text-xl text-zinc-50 transition hover:bg-zinc-800 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none sm:flex dark:bg-zinc-800"
+            className="inline-flex items-center rounded-xl bg-zinc-900 p-4 px-6 text-xl text-zinc-50 transition hover:bg-zinc-800 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none sm:flex dark:bg-zinc-800"
           >
             Back to Home
           </Link>
