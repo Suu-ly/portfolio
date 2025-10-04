@@ -7,12 +7,12 @@ function Separator({
 }: { orientation?: "horizontal" | "vertical" } & React.ComponentProps<"div">) {
   return (
     <div
-      role="presentation"
+      role="separator"
       className={cn(
-        "bg-zinc-200 dark:bg-zinc-700 shrink-0",
+        "shrink-0 bg-zinc-200 dark:bg-zinc-700",
         orientation === "horizontal" && "h-px w-full",
-        orientation === "vertical" && "w-px h-full",
-        className
+        orientation === "vertical" && "h-full w-px",
+        className,
       )}
       {...props}
     />

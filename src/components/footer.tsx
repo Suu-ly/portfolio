@@ -5,9 +5,14 @@ import { Separator } from "./ui/separator";
 export default function Footer({ children }: { children?: React.ReactNode }) {
   return (
     <footer className="flex flex-col gap-12 bg-zinc-900 pt-8 pb-4 sm:pt-16 lg:pt-32 lg:pb-8">
-      <MaxWidthWrapper className="w-full">{children}</MaxWidthWrapper>
-      <MaxWidthWrapper className="flex w-full flex-col gap-4 sm:flex-row sm:gap-32">
-        <nav>
+      <MaxWidthWrapper asDiv className="w-full">
+        {children}
+      </MaxWidthWrapper>
+      <MaxWidthWrapper
+        asDiv
+        className="flex w-full flex-col gap-4 sm:flex-row sm:gap-32"
+      >
+        <div>
           <span className="mb-2 text-sm font-medium text-zinc-500">
             Explore
           </span>
@@ -37,7 +42,7 @@ export default function Footer({ children }: { children?: React.ReactNode }) {
               </Link>
             </li>
           </ul>
-        </nav>
+        </div>
         <Separator className="bg-zinc-700 sm:hidden" />
         <div>
           <span className="mb-2 text-sm font-medium text-zinc-500">
@@ -65,7 +70,10 @@ export default function Footer({ children }: { children?: React.ReactNode }) {
           </ul>
         </div>
       </MaxWidthWrapper>
-      <MaxWidthWrapper className="flex w-full justify-between text-sm font-medium text-zinc-500">
+      <MaxWidthWrapper
+        asDiv
+        className="flex w-full justify-between text-sm font-medium text-zinc-500"
+      >
         <span>&copy; {new Date().getFullYear()} Lance</span>
         <span>Singapore</span>
       </MaxWidthWrapper>

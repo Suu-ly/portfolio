@@ -33,11 +33,11 @@ export default async function Home() {
           <h1 className="font-display animate-slide-in text-main mb-8 text-6xl font-bold lg:text-8xl">
             Lance Yeo
           </h1>
-          <p className="animate-slide-in animation-delay-75 mb-16 text-2xl font-medium text-zinc-800 lg:text-4xl dark:text-zinc-200">
+          <p className="animate-slide-in animation-delay-75 mb-8 text-2xl font-medium text-zinc-800 lg:mb-12 lg:text-4xl dark:text-zinc-200">
             A full-stack dev who bridges design and development to build things
             that feel <i className="text-accent">just right</i>.
           </p>
-          <p className="animate-slide-in animation-delay-150 text-muted text-sm lg:text-lg">
+          <p className="animate-slide-in animation-delay-150 text-muted lg:text-lg">
             Currently working as a frontend developer at Tiktok.
           </p>
         </MaxWidthWrapper>

@@ -6,20 +6,23 @@ import NextProject from "./next-project";
 
 export const MaxWidthWrapper = ({
   className,
+  asDiv,
   children,
 }: {
   className?: string;
+  asDiv?: boolean;
   children: React.ReactNode;
 }) => {
+  const Comp = asDiv ? "div" : "section";
   return (
-    <section
+    <Comp
       className={cn(
         "mx-auto max-w-[1600px] px-4 md:px-16 2xl:px-32",
         className,
       )}
     >
       {children}
-    </section>
+    </Comp>
   );
 };
 
