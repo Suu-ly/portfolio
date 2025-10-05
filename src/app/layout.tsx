@@ -44,6 +44,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${plusJakartaSans.variable} ${bricolageGrotesque.variable} ${hack.variable} antialiased`}
     >
       <body>

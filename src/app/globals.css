@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: var(--color-zinc-50);
   --main: var(--color-zinc-900);
@@ -52,16 +54,14 @@
   animation-delay: --value(integer)ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--color-zinc-950);
-    --main: var(--color-zinc-50);
-    --body: var(--color-zinc-300);
-    --muted: var(--color-zinc-400);
-    --scrollbar: var(--color-neutral-600);
-    --accent: var(--color-sky-500);
-    --border: var(--color-zinc-700);
-  }
+.dark {
+  --background: var(--color-zinc-950);
+  --main: var(--color-zinc-50);
+  --body: var(--color-zinc-300);
+  --muted: var(--color-zinc-400);
+  --scrollbar: var(--color-neutral-600);
+  --accent: var(--color-sky-500);
+  --border: var(--color-zinc-700);
 }
 
 * {
