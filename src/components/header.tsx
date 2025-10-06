@@ -70,7 +70,7 @@ const menuVariants: Variants = {
     opacity: 1,
     transform: "translateY(0rem)",
     transition: {
-      duration: 0.75,
+      duration: 0.5,
       ease: [0.165, 0.84, 0.44, 1],
     },
   },
@@ -106,12 +106,16 @@ export default function Header({
     >
       <div
         role="presentation"
-        className="from-background via-background/30 pointer-events-none absolute inset-0 -z-10 h-full bg-gradient-to-b via-70% to-transparent"
+        className="from-background via-background/30 pointer-events-none absolute inset-0 -z-5 h-full bg-gradient-to-b via-70% to-transparent"
+      />
+      <div
+        role="presentation"
+        className="pointer-events-none absolute inset-0 -z-10 h-full"
       >
-        <div className="absolute inset-x-0 top-0 h-full mask-b-from-20% mask-b-to-40% backdrop-blur-sm"></div>
-        <div className="absolute inset-x-0 top-0 h-full mask-t-from-80% mask-b-from-40% mask-b-to-60% backdrop-blur-xs"></div>
-        <div className="absolute inset-x-0 top-0 h-full mask-t-from-60% mask-t-to-80% mask-b-from-60% mask-b-to-80% backdrop-blur-[2px]"></div>
-        <div className="absolute inset-x-0 top-0 h-full mask-t-from-40% mask-t-to-60% mask-b-from-80% backdrop-blur-[1px]"></div>
+        <div className="absolute inset-x-0 top-0 h-1/2 mask-b-from-50% backdrop-blur-sm"></div>
+        <div className="absolute inset-x-0 top-0 h-3/4 mask-t-from-66% mask-b-from-66% backdrop-blur-xs"></div>
+        <div className="absolute inset-x-0 top-1/4 h-3/4 mask-t-from-66% mask-b-from-66% backdrop-blur-[2px]"></div>
+        <div className="absolute inset-x-0 top-1/2 h-1/2 mask-t-from-50% mask-b-from-75% backdrop-blur-[1px]"></div>
       </div>
       <div className="flex justify-between gap-4">
         <Link
@@ -137,7 +141,7 @@ export default function Header({
             Menu
           </button>
           <Separator
-            className="my-1.5 h-auto self-stretch"
+            className="my-1.5 h-auto self-stretch bg-zinc-800/15 dark:bg-zinc-100/20"
             orientation="vertical"
           />
           <ThemeSwitcher />
