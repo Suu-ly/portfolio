@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FooterDate } from "./footer-date";
 import { MaxWidthWrapper } from "./page-template";
 import { Separator } from "./ui/separator";
 
@@ -74,7 +75,9 @@ export default function Footer({ children }: { children?: React.ReactNode }) {
         asDiv
         className="flex w-full justify-between text-sm font-medium text-zinc-500"
       >
-        <span>&copy; {new Date().getFullYear()} Lance</span>
+        <span suppressHydrationWarning>
+          &copy; <FooterDate /> Lance
+        </span>
         <span>Singapore</span>
       </MaxWidthWrapper>
     </footer>
