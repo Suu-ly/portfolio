@@ -53,6 +53,7 @@ export default function Footer({ children }: { children?: React.ReactNode }) {
             <li>
               <a
                 href="https://www.linkedin.com/in/lanceyeo/"
+                rel="noreferrer"
                 target="_blank"
                 className="relative rounded font-medium text-zinc-300 transition after:absolute after:top-full after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-zinc-300 after:transition-transform hover:text-zinc-100 hover:after:scale-x-100 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none"
               >
@@ -62,6 +63,7 @@ export default function Footer({ children }: { children?: React.ReactNode }) {
             <li>
               <a
                 href="https://github.com/Suu-ly"
+                rel="noreferrer"
                 target="_blank"
                 className="relative rounded font-medium text-zinc-300 transition after:absolute after:top-full after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-zinc-300 after:transition-transform hover:text-zinc-100 hover:after:scale-x-100 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none"
               >

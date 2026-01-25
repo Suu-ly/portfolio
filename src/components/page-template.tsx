@@ -1,6 +1,7 @@
 import { PageProperties } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { IconCornerDownRight } from "@tabler/icons-react";
+import { ComponentPropsWithoutRef } from "react";
 import ImageFadeIn from "./image-fade-in";
 import NextProject from "./next-project";
 
@@ -8,10 +9,9 @@ export const MaxWidthWrapper = ({
   className,
   asDiv,
   children,
-}: {
-  className?: string;
+  ...rest
+}: ComponentPropsWithoutRef<"div"> & {
   asDiv?: boolean;
-  children: React.ReactNode;
 }) => {
   const Comp = asDiv ? "div" : "section";
   return (
@@ -20,6 +20,7 @@ export const MaxWidthWrapper = ({
         "mx-auto max-w-[1600px] px-4 md:px-16 2xl:px-32",
         className,
       )}
+      {...rest}
     >
       {children}
     </Comp>
