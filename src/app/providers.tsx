@@ -20,7 +20,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
           const node = wrapperRef.current;
           const scrollbarWidth = window.innerWidth - node.clientWidth;
           Lenis?.stop();
-          node.style.paddingRight = `${scrollbarWidth}px`;
+          document.body.style.overflow = "hidden";
+          node.style.marginRight = `${scrollbarWidth}px`;
           headerRef.current.style.marginRight = `${scrollbarWidth}px`;
           animate(
             node,
@@ -29,8 +30,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
           );
         }}
         enter={(next) => {
-          headerRef.current.style.marginRight = "";
-          wrapperRef.current.style.paddingRight = "";
+          headerRef.current.style.removeProperty("margin-right");
+          wrapperRef.current.style.removeProperty("margin-right");
+          document.body.style.removeProperty("overflow");
           Lenis?.start();
           animate(
             wrapperRef.current,
